@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5298bb8-18a8-4b5f-a037-f9b1cfde515f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/G2-T6/src/main/java/G2T6/G2T6/G2T6/stats/Economic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/G2-T6/src/main/java/G2T6/G2T6/G2T6/stats/Emission.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/G2-T6/src/main/java/G2T6/G2T6/G2T6/stats/GameStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/G2-T6/src/main/java/G2T6/G2T6/G2T6/stats/GameStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/G2-T6/src/main/java/G2T6/G2T6/G2T6/stats/Happiness.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/G2-T6/src/main/java/G2T6/G2T6/G2T6/StateMachine/PlayerCurrentState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/G2-T6/src/main/java/G2T6/G2T6/G2T6/StateMachine/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/G2-T6/data/gameStats.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/G2-T6/data/gameStats.mv.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,5 +61,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
