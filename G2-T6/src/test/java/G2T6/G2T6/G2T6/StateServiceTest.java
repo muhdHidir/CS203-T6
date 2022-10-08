@@ -8,9 +8,10 @@ import static org.mockito.Mockito.when;
 
 import java.util.*;
 
-import G2T6.G2T6.G2T6.StateMachine.PlayerCurrentState;
-import G2T6.G2T6.G2T6.StateMachine.StateRepository;
-import G2T6.G2T6.G2T6.StateMachine.StateServiceImplementation;
+import G2T6.G2T6.G2T6.models.PlayerCurrentState;
+import G2T6.G2T6.G2T6.repository.StateRepository;
+import G2T6.G2T6.G2T6.serviceImplementation.StateServiceImplementation;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

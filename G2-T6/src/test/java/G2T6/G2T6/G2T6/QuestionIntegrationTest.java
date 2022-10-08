@@ -26,6 +26,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import java.util.*;
 
 import G2T6.G2T6.G2T6.questions.*;
+import G2T6.G2T6.G2T6.repository.QuestionRepository;
 import G2T6.G2T6.G2T6.repository.RefreshTokenRepository;
 import G2T6.G2T6.G2T6.repository.RoleRepository;
 import G2T6.G2T6.G2T6.repository.UserRepository;

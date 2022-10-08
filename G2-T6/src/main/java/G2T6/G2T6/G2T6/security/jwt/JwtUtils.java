@@ -12,8 +12,7 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
-import G2T6.G2T6.G2T6.security.services.UserDetailsImpl;
-
+import G2T6.G2T6.G2T6.serviceImplementation.UserDetailsImpl;
 import io.jsonwebtoken.*;
 
 @Component

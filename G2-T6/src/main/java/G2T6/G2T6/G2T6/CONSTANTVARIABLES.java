@@ -1,6 +1,6 @@
 package G2T6.G2T6.G2T6;
 
-import G2T6.G2T6.G2T6.StateMachine.State;
+import G2T6.G2T6.G2T6.models.State;
 
 public class CONSTANTVARIABLES {
     private CONSTANTVARIABLES(){} // prevent other copys

@@ -1,7 +1,8 @@
 package G2T6.G2T6.G2T6;
 
-import G2T6.G2T6.G2T6.StateMachine.PlayerCurrentState;
-import G2T6.G2T6.G2T6.StateMachine.StateRepository;
+import G2T6.G2T6.G2T6.models.PlayerCurrentState;
+import G2T6.G2T6.G2T6.repository.StateRepository;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

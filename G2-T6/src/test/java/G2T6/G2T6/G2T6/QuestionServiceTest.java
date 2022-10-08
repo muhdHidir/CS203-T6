@@ -17,7 +17,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import G2T6.G2T6.G2T6.models.Question;
 import G2T6.G2T6.G2T6.questions.*;
+import G2T6.G2T6.G2T6.repository.QuestionRepository;
+import G2T6.G2T6.G2T6.serviceImplementation.QuestionServiceImpl;
 
 @ExtendWith(MockitoExtension.class) 
 class QuestionServiceTest {

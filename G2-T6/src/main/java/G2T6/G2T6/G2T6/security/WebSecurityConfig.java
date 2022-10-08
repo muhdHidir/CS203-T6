@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import G2T6.G2T6.G2T6.security.jwt.AuthEntryPointJwt;
 import G2T6.G2T6.G2T6.security.jwt.AuthTokenFilter;
-import G2T6.G2T6.G2T6.security.services.UserDetailsServiceImpl;
+import G2T6.G2T6.G2T6.serviceImplementation.UserDetailsServiceImpl;
 
 @Configuration
 //@EnableWebSecurity

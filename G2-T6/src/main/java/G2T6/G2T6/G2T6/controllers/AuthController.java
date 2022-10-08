@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import G2T6.G2T6.G2T6.exception.TokenRefreshException;
+import G2T6.G2T6.G2T6.exceptions.TokenRefreshException;
 import G2T6.G2T6.G2T6.models.ERole;
 import G2T6.G2T6.G2T6.models.RefreshToken;
 import G2T6.G2T6.G2T6.models.Role;
@@ -36,8 +36,8 @@ import G2T6.G2T6.G2T6.payload.response.TokenRefreshResponse;
 import G2T6.G2T6.G2T6.repository.RoleRepository;
 import G2T6.G2T6.G2T6.repository.UserRepository;
 import G2T6.G2T6.G2T6.security.jwt.JwtUtils;
-import G2T6.G2T6.G2T6.security.services.RefreshTokenService;
-import G2T6.G2T6.G2T6.security.services.UserDetailsImpl;
+import G2T6.G2T6.G2T6.serviceImplementation.UserDetailsImpl;
+import G2T6.G2T6.G2T6.services.RefreshTokenService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

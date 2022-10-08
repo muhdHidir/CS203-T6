@@ -1,9 +1,9 @@
 package G2T6.G2T6.G2T6;
 
 import G2T6.G2T6.G2T6.*;
-import G2T6.G2T6.G2T6.StateMachine.PlayerCurrentState;
-import G2T6.G2T6.G2T6.StateMachine.StateRepository;
-import G2T6.G2T6.G2T6.stats.GameStatsRepository;
+import G2T6.G2T6.G2T6.models.PlayerCurrentState;
+import G2T6.G2T6.G2T6.repository.GameStatsRepository;
+import G2T6.G2T6.G2T6.repository.StateRepository;
 import lombok.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
