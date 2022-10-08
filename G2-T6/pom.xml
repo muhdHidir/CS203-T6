@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>csd</groupId>
-	<artifactId>G2-T6</artifactId>
+	<artifactId>greeninvestor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
@@ -59,12 +59,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>org.jetbrains</groupId>
-			<artifactId>annotations</artifactId>
-			<version>RELEASE</version>
-			<scope>compile</scope>
-		</dependency>
 		
 		<dependency>
       		<groupId>io.jsonwebtoken</groupId>
@@ -77,6 +71,13 @@
       		<artifactId>spring-boot-starter-security</artifactId>
     	</dependency>
 
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+			<scope>test</scope>
+		</dependency>
+
 
 	</dependencies>
 
@@ -85,14 +86,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>16</source>
-					<target>16</target>
-				</configuration>
+				<!-- <configuration>
+            		<skip>true</skip>
+        		</configuration>
+         		<executions>
+            		<execution>
+               			<phase>none</phase>
+            		</execution>
+         		</executions> -->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @SpringBootApplication
@@ -16,23 +17,23 @@ public class TheGreenInvestorApplication {
 		JdbcTemplate template = ctx.getBean(JdbcTemplate.class);
 		// template.execute("DROP TABLE GameStats IF EXISTS");
 
-		// template.execute("insert into ROLES (id, name) values (1, 'ROLE_USER')");
-		// template.execute("insert into ROLES (id, name) values (2, 'ROLE_MODERATOR')");
-		// template.execute("insert into ROLES (id, name) values (3, 'ROLE_ADMIN')");
-		// template.execute("insert into ROLES (id, name) values (4, 'ROLE_SUPER_ADMIN')");
-		// template.execute("insert into ROLES (id, name) values (5, 'ROLE_SUPER_USER')");
-		// template.execute("insert into ROLES (id, name) values (6, 'ROLE_SUPER_MODERATOR')");
+		//  template.execute("insert into ROLES (id, name) values (1, 'ROLE_USER')");
+		//  template.execute("insert into ROLES (id, name) values (2, 'ROLE_MODERATOR')");
+		//  template.execute("insert into ROLES (id, name) values (3, 'ROLE_ADMIN')");
+//		 template.execute("insert into ROLES (id, name) values (4, 'ROLE_SUPER_ADMIN')");
+//		 template.execute("insert into ROLES (id, name) values (5, 'ROLE_SUPER_USER')");
+//		 template.execute("insert into ROLES (id, name) values (6, 'ROLE_SUPER_MODERATOR')");
 
-		// BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		// String pw = encoder.encode("password");
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String pw = encoder.encode("password");
 		// template.execute("insert into USERS (id, username, email, password) values (1, 'johnTheAdminTest', 'johnnyAdminTest@gmail.com', '" + pw + "')");
-
+		template.execute("insert into users (id, username, email, password, role) values (1, 'johnTheAdminTest', 'johnTheAdminTest@gmail.com', '" + pw + "', 'ROLE_ADMIN')");
 		// template.execute("insert into USER_ROLES (user_id, role_id) values (1, 3)");
 
 //		System.out.println("[Add GameStats]: " + repo.save(new GameStats(1l, 2, 3, 4)));
 //		System.out.println("[Add GameStats]: " + repo.save(new GameStats(2l, 0, 0, 0)));
 
-		//System.out.println("[Add usersession]: " + UserRepo.save(new PlayerCurrentState(1L, CONSTANTVARIABLES.DEFAULTYEAR, CONSTANTVARIABLES.DEFAULTSTATE)));
+		//System.out.println("[Add usersession]: " + UserRepo.save(new CurrentState(1L, CONSTANTVARIABLES.DEFAULTYEAR, CONSTANTVARIABLES.DEFAULTSTATE)));
 
 		//template.execute("CREATE TABLE USERS(id int, email varchar(255), password varchar(255), username varchar(255))");
 

@@ -27,7 +27,6 @@ import java.util.*;
 
 import G2T6.G2T6.G2T6.questions.*;
 import G2T6.G2T6.G2T6.repository.RefreshTokenRepository;
-import G2T6.G2T6.G2T6.repository.RoleRepository;
 import G2T6.G2T6.G2T6.repository.UserRepository;
 import G2T6.G2T6.G2T6.models.*;
 import G2T6.G2T6.G2T6.payload.request.*;
@@ -55,22 +54,13 @@ public class QuestionIntegrationTest {
 
 	@Autowired
 	private RefreshTokenRepository refreshRepo;
-
-	@Autowired RoleRepository rolesRepo;
 	
 	@BeforeEach()
 	void createUser() {
 
         // Making an admin user for test
         User newUser = new User("johnTheAdmin", "johnny@gmail.com",
-        encoder.encode("myStrongPw"));
-        Set<Role> roles = new HashSet<>();
-
-        Role adminRole = rolesRepo.findByName(ERole.ROLE_ADMIN)
-        .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-        
-        roles.add(adminRole);
-        newUser.setRoles(roles);
+                encoder.encode("myStrongPw"), "ROLE_ADMIN");
         usersRepo.save(newUser);
     }
 
@@ -116,7 +106,6 @@ public class QuestionIntegrationTest {
 	}
 
 	@Test
-	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/test-data.sql")
 	public void addQuestion_Success() throws Exception {
 
 		//Login as admin

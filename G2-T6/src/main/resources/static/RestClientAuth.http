@@ -41,7 +41,7 @@ Content-Type: application/json
 ###
 POST http://localhost:8080/api/questions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huVGhlQWRtaW5UZXN0IiwiaWF0IjoxNjY1MTI3MTc1LCJleHAiOjE2NjUxMjcyMzV9.xPsSb2II87WCg5R6aCpOS2vIIjtj7xUIhemrv-q7eWNERJ0gOJQTbvhzagNNPTvNRy9MXgEFaBrDDTwNY8a8Sg
+Authorization: Bearer eyJhbGciOiJIUzUxMi3J9.eyJzdWIiOiJqb2huVGhlQWRtaW5UZXN0IiwiaWF0IjoxNjY1MjIwODAwLCJleHAiOjE2NjUyMjQ0MDB9.KZkkhkioX2COfVwRuPbd3RUYJA2kidTfsNWY2umWuELZIhyvNLx_uUgFxmsM9IDsWcJQ_CmvAJGHN-96WDqmfQ
 
 {
     "question": "What is the best programming language2?"
