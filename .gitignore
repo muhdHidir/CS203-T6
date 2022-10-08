@@ -1,2 +1,10 @@
 
 G2-T6/data/gameStats.mv.db
+G2-T6/data/gameStats.trace.db
+
+.idea
+*.iws
+*.iml
+*.ipr
+
+.vscode/
