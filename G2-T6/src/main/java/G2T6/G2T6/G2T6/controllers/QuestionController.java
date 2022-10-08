@@ -22,7 +22,7 @@ import G2T6.G2T6.G2T6.exceptions.QuestionNotFoundException;
 import G2T6.G2T6.G2T6.models.Question;
 import G2T6.G2T6.G2T6.services.QuestionService;
 
-// @CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api")
 @RestController
 public class QuestionController {
