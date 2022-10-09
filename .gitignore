@@ -1,4 +1,3 @@
-
 G2-T6/data/gameStats.mv.db
 G2-T6/data/gameStats.trace.db
 
@@ -8,3 +7,6 @@ G2-T6/data/gameStats.trace.db
 *.ipr
 
 .vscode/
+.idea/workspace.xml
+.idea/vcs.xml
+G2-T6/data/gameStats.mv.db
