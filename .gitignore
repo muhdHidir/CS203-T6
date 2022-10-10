@@ -1,6 +1,3 @@
-G2-T6/data/gameStats.mv.db
-G2-T6/data/gameStats.trace.db
-
 .idea
 *.iws
 *.iml
@@ -9,4 +6,3 @@ G2-T6/data/gameStats.trace.db
 .vscode/
 .idea/workspace.xml
 .idea/vcs.xml
-G2-T6/data/gameStats.mv.db
