@@ -70,7 +70,8 @@ export default class Game extends Component {
     return (
       <nav className="navbar navbar-expand h-12 bg-gradient-to-r from-transparent via-teal-400/70 border-bottom-line h-15">
         <audio id="audio_player" autoPlay loop>
-          <source src={myMusic} type="audio/mp3" />
+          {/* <source src={myMusic} type="audio/mp3" /> */}
+          <source src={null} type="audio/mp3" />
         </audio>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
