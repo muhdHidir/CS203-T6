@@ -133,7 +133,7 @@ export default function NavBar() {
       </audio>
       <div className="navbar-nav mr-auto">
         <li className="nav-item">
-          <Link to={"/home"} className="nav-link">
+          <Link to={"/home"} className="nav-link" class="notranslate">
             Home
           </Link>
         </li>
@@ -142,6 +142,7 @@ export default function NavBar() {
             to={"/leaderboard"}
             className="nav-link"
             onClick={_toggleMuteButton}
+            class="notranslate"
           >
             {t("home-leaderboard")}
           </Link>
@@ -149,7 +150,7 @@ export default function NavBar() {
 
         {showModeratorBoard && (
           <li className="nav-item">
-            <Link to={"/mod"} className="nav-link">
+            <Link to={"/mod"} className="nav-link" class="notranslate">
               Moderator Board
             </Link>
           </li>
@@ -157,7 +158,7 @@ export default function NavBar() {
 
         {showAdminBoard && (
           <li className="nav-item">
-            <Link to={"/admin"} className="nav-link">
+            <Link to={"/admin"} className="nav-link" class="notranslate">
               Admin Board
             </Link>
           </li>
@@ -165,7 +166,7 @@ export default function NavBar() {
 
         {currentUser && (
           <li className="nav-item">
-            <Link to={"/user"} className="nav-link">
+            <Link to={"/user"} className="nav-link" class="notranslate">
               User
             </Link>
           </li>
@@ -173,7 +174,12 @@ export default function NavBar() {
       </div>
 
       {/* green investor logo */}
-      <img className="logo" src={thegreeninvestor} alt="thegreeninvestorlogo" />
+      <img
+        className="logo"
+        src={thegreeninvestor}
+        alt="thegreeninvestorlogo"
+        class="notranslate"
+      />
 
       <div className="navbar-nav ml-auto">
         {/* language selector */}
@@ -196,6 +202,7 @@ export default function NavBar() {
             <MuteButton
               isMuted={isMuted}
               _toggleMuteButton={_toggleMuteButton}
+              class="notranslate"
             />
           </span>
         </li>
@@ -205,7 +212,7 @@ export default function NavBar() {
       {currentUser ? (
         <div className="navbar-nav">
           <li className="nav-item">
-            <Link to={"/profile"} className="nav-link">
+            <Link to={"/profile"} className="nav-link" class="notranslate">
               {currentUser.username}
             </Link>
           </li>
@@ -218,11 +225,11 @@ export default function NavBar() {
       ) : (
         // when user is not logged in
         <div className="navbar-nav">
-          <li className="nav-item">
+          <li className="nav-item" class="notranslate">
             {/* <Link to={"/login"} className="nav-link">
               {t("home-login")}
             </Link> */}
-            <LoginPopUp />
+            <LoginPopUp class="notranslate" />
           </li>
 
           {/* <li className="nav-item">
