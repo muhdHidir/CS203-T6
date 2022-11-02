@@ -11,6 +11,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -21,30 +22,33 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CurrentState {
-
+    // id of CurrentState class and primary key of currentstate table
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @JsonIgnore
-//    @OneToOne
-//    @MapsId
-//    @JoinColumn(name = "user_id")
+    // this Object belong to which user
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    // year value, can be treated the same as question number
     @Min(0) @Max(10) @NotNull
     private int yearValue;
 
+    // the current state of user to help user get back into game after closing broswer
     @Enumerated(EnumType.STRING) @NotNull
     private State currentState;
 
+    // the question set user playing
     @NotNull
     private int questionSetId; // somewhere randomise and add in
 
-    private String userResponse; // gonna be something like this 1,2,4,2 use split // everytime user update
+    // the user's response
+    // it will be a string and split into different questions answer
+    private String userResponse = "";
 
+    // the game stats that this state is connected to
     @OneToOne(mappedBy = "currentState", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private GameStats gameStats;
@@ -68,21 +72,44 @@ public class CurrentState {
         this.currentState = state;
     }
 
+    // change state
     public void changeState(State state){
         this.currentState = state;
     }
 
-    public List<Integer> getUserAnswers(){
+    /**
+     * Split the answer to individual question
+     * @return list of string answer
+     */
+    public List<String> getUserAnswers(){
         if (userResponse.isEmpty()) return null;
-        String answers[] = userResponse.split(",");
-        List<Integer> ans = new ArrayList<>();
-        for(int i = 0; i < answers.length; i++){
-            ans.add(Integer.parseInt(answers[i]));
-        }
-        return ans;
+        List<String> answers = Arrays.stream(userResponse.split(",")).toList();
+        return answers;
     }
 
-    public String addNewUserResponse(String current, Integer currentAns){
-        return current.concat(","+ currentAns);
+    /**
+     *
+     * @param currentAns a Integer Value
+     * @return new string after adding current answer
+     */
+    public String addNewUserResponse(Integer currentAns){
+        if(!userResponse.isEmpty()) {
+            userResponse += ",";
+        }
+        userResponse += currentAns;
+        return userResponse;
+    }
+
+    /**
+     *
+     * @param currentAns a String Value
+     * @return new string after adding current answer
+     */
+    public String addNewUserResponse(String currentAns){
+        if(!userResponse.isEmpty()) {
+            userResponse += ",";
+        }
+        userResponse += currentAns;
+        return userResponse;
     }
 }
