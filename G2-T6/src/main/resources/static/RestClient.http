@@ -41,7 +41,7 @@ Content-Type: application/json
 {
    "id" : 3,
    "question" : "It is 22 April, AKA Earth Day! Your company decide to celebrate in the following way:",
-   "imageLocation" : "../assets/img3.jpg"
+   "imageLink" : "../assets/img3.jpg"
 }
 
 ###

@@ -43,11 +43,13 @@ public class QuestionController {
             Question question = questions.get(idx);
             List<Option> options = question.getOptions();
             
-            // if NOT open ended question, randomly remove 2 options
-            if (!question.isOpenEnded()) {
+            // if NOT open ended question, randomly remove until there are <=4 options
+            if (!question.isOpenEnded() && options.size() > 4) {
                 Random random = new Random();
-                options.remove(random.nextInt(6));
-                options.remove(random.nextInt(5));
+
+                while (options.size() > 4) {
+                    options.remove(random.nextInt(options.size()));
+                }
             }
 
             // set list of options after removing 2 options randomly

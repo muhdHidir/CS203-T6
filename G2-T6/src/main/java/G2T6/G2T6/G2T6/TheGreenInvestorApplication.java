@@ -45,7 +45,7 @@ public class TheGreenInvestorApplication {
 		// Questions
 		qList.add(new Question(
 				"q1-key",
-				"../assets/img1.jpg", CONSTANTVARIABLES.NOT_OPEN_ENDED));
+				"https://tgi-bucket.s3.ap-southeast-1.amazonaws.com/img11.jpg", CONSTANTVARIABLES.NOT_OPEN_ENDED));
 		qList.add(new Question("The company has earned a record profit for the year. You decide to use the money for:",
 				"../assets/img2.jpg", CONSTANTVARIABLES.NOT_OPEN_ENDED));
 		qList.add(new Question("It is 22 April, AKA Earth Day! Your company decide to celebrate in the following way:",

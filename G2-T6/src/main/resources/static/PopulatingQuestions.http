@@ -1,6 +1,10 @@
 
 ###
 GET http://localhost:8080/api/questions
+
+###
+GET http://localhost:8080/api/questionsAndOptions
+
 ###
 DELETE http://localhost:8080/api/questions/1/options/3
 
@@ -10,7 +14,7 @@ Content-Type: application/json
 
 {
     "question": "Test",
-    "imageLocation": "https://tgi-bucket.s3.ap-southeast-1.amazonaws.com/img11.jpg",
+    "imageLink": "https://tgi-bucket.s3.ap-southeast-1.amazonaws.com/img11.jpg",
     "openEnded": false
 }
 
