@@ -135,14 +135,14 @@ export default function Home() {
             />
           </Parallax> */}
           <div className="text-container grid grid-cols-3 text-center curve ">
-            <Parallax
-              translateX={[-20, 10]}
-              className="subheader justify-start"
-            >
+            <Parallax translateX={[-20, 10]} className="subheader m-auto p-3">
               {subheaders[0]}
             </Parallax>
             <span className="flex-1" />
-            <Parallax translateX={[20, -10]} className="text-content">
+            <Parallax
+              translateX={[20, -10]}
+              className="text-content m-auto p-3  "
+            >
               {displayContent[0].src}
             </Parallax>
           </div>
@@ -152,7 +152,7 @@ export default function Home() {
             <Parallax
               speed={20}
               translateX={[-30, 10]}
-              className="text-content"
+              className="text-content m-auto p-3"
             >
               {displayContent[1].src}
             </Parallax>
@@ -160,7 +160,7 @@ export default function Home() {
             <Parallax
               // speed={20}
               translateX={[20, -20]}
-              className="subheader"
+              className="subheader m-auto p-3"
             >
               {subheaders[1]}
             </Parallax>
@@ -181,14 +181,14 @@ export default function Home() {
             <Parallax
               // speed={20}
               translateX={[-20, 30]}
-              className="subheader m-auto"
+              className="subheader m-auto p-3"
             >
               {subheaders[2]}
             </Parallax>
             <Parallax
               speed={20}
               translateX={[20, -30]}
-              className="text-content m-auto"
+              className="text-content m-auto p-3"
             >
               {displayContent[2].src}
             </Parallax>
@@ -199,11 +199,27 @@ export default function Home() {
             translateY={[-20, 30]}
             className="h-screen items-center grid grid-rows-3 text-center"
           >
-            <div className="subheader m-auto">{subheaders[3]}</div>
-            <div className="text-content m-auto">{displayContent[3].src}</div>
-            <div className="play-button m-auto p-2 text-3xl cursor-pointer border-white border-2 border-opacity-50 rounded-3xl hover:scale-110">
-              Play
+            <div className="subheader m-auto p-3">{subheaders[3]}</div>
+            <div className="text-content m-auto p-3">
+              {displayContent[3].src}
             </div>
+            <div className="play-button m-auto p-3 p-2 text-3xl cursor-pointer hover:bg-darkGreen-50 hover:border-0 border-white border-2 border-opacity-50 rounded-3xl hover:scale-110">
+              <Link to="/game">
+                Play
+                {/* {t("home-button-playgame")} */}
+              </Link>
+            </div>
+            {/* {currentUser ? (
+              <Link to="/game" className="">
+                <Button className="play-button m-auto p-3 p-2 text-3xl cursor-pointer hover:bg-darkGreen-50 hover:border-0 border-white border-2 border-opacity-50 rounded-3xl hover:scale-110">
+                  {"home-button-playgame"}
+                </Button>
+              </Link>
+            ) : (
+              <Button className="play-button m-auto p-3 p-2 text-3xl cursor-pointer hover:bg-darkGreen-50 hover:border-0 border-white border-2 border-opacity-50 rounded-3xl hover:scale-110">
+                {"home-button-playguest"}
+              </Button>
+            )} */}
           </Parallax>
         </div>
       </div>

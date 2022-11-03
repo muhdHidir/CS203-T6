@@ -41,7 +41,7 @@
 .title {
   font-size: 3em;
   text-align: center;
-  font-family: "Roboto", san-serif;
+  font-family: "Playfair Display SC", serif;
   font-weight: 700;
 }
 
@@ -89,7 +89,8 @@
 .subheader,
 .text-content {
   background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
 }
 
 .screen1 {
@@ -103,15 +104,13 @@
   width: 100px;
 }
 
-.play-button:hover {
-  background-color: green;
-  border: none;
-}
-
 .subheader {
+  font-family: "Playfair Display SC", serif;
   font-size: xx-large;
 }
 
 .text-content {
+  font-family: "Roboto", sans-serif;
   font-size: large;
+  text-align: justify !important;
 }

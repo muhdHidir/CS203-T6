@@ -158,19 +158,22 @@ export default function NavBar() {
       </div>
 
       {/* Title, keep at Center, except mobile, which will be below lang/music */}
-      <span className="lg:order-4 -order-1 title my-auto col-span-12 lg:col-span-4 text-center">
+      <span className="lg:order-4 -order-1 logo my-auto col-span-12 lg:col-span-4 text-center">
         The Green Investor
       </span>
 
       {/* Lang & Music, keep at right, before login but at top for mobile */}
       {/* music button, ADD MUSIC LATER */}
-      <div className="-order-3 lg:order-6 col-span-6 lg:col-span-1 mx-auto py-3 my-auto hover:scale-110 cursor-pointer p-auto">
+      <div className="-order-3 lg:order-6 col-span-6 lg:col-span-1 py-3 my-auto hover:scale-110 cursor-pointer align-self-center">
         <MuteButton isMuted={isMuted} _toggleMuteButton={_toggleMuteButton} />
+      </div>
+      <div className="-order-2 lg:order-7 col-span-6 lg:col-span-1 py-3 my-auto">
+        <div className="py-3" id="google_translate_element" />
       </div>
 
       {/* Login, keep at rightmost at all times */}
       {/* Log in, log out */}
-      <div className="order-last col-span-12 col-start-7 lg:col-span-2 py-3 my-auto text-center">
+      <div className="order-last col-span-12 col-start-7 lg:col-span-2 py-3 m-auto text-center">
         {/* when user is logged in */}
         {currentUser ? (
           <div className="col-span-1 grid grid-cols-2">
@@ -189,8 +192,9 @@ export default function NavBar() {
           </div>
         ) : (
           // when user is not logged in
-          <div className="col-end-1">
-            <LoginPopUp />
+          // when user is not logged in
+          <div className="col-end-1" class="notranslate">
+            <LoginPopUp class="notranslate" />
           </div>
         )}
       </div>
