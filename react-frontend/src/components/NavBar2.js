@@ -29,8 +29,10 @@ export default function NavBar2() {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [isMuted, setIsMuted] = useState(false);
-  const [music, setMusic] = useState(new Audio(myMusic));
+  // const [music, setMusic] = useState(new Audio(myMusic));
+  const [playing, setPause] = useState(false);
+
+  const player = new Audio(myMusic);
 
   const { t } = useTranslation();
 
@@ -62,6 +64,14 @@ export default function NavBar2() {
     };
   }, []);
 
+  // For music player, runs everytime 'playing' is changed
+  useEffect(() => {
+    playing ? player.play() : player.pause();
+
+    // This is cleanup of the effect
+    return () => player.pause();
+  }, [playing]);
+
   function logOut() {
     AuthService.logout();
     setShowModeratorBoard(false);
@@ -73,7 +83,7 @@ export default function NavBar2() {
     var myAudio = document.getElementById("audio_player");
     myAudio.muted = !myAudio.muted;
 
-    setIsMuted(!isMuted);
+    setPause(!playing);
   }
   const googleTranslateElementInit = () => {
     var duplicate_google_translate_counter = 0;
@@ -135,9 +145,14 @@ export default function NavBar2() {
     // Fixed size that NavBar will take up
     <div className="nav-container lg:h-20 fixed w-full text-white text-m grid grid-cols-12 z-20 ">
       {/* Hidden Audio Player - DO LATER */}
-      <audio id="audio_player" autoPlay loop>
-        {/* <source src={myMusic} type="audio/mp3" /> */}
-        <source src={null} type="audio/mp3" />
+      <audio
+        id="audio_player"
+        autoPlay
+        loop
+        // controls
+      >
+        <source src={myMusic} type="audio/mp3" />
+        {/* <source src={null} type="audio/mp3" /> */}
       </audio>
 
       {/* Home and Leaderboard, keep at leftmost except for mobile, which will be below title */}
@@ -171,7 +186,7 @@ export default function NavBar2() {
       {/* Lang & Music, keep at right, before login but at top for mobile */}
       {/* music button, ADD MUSIC LATER */}
       <div className="-order-3 lg:order-6 col-span-6 lg:col-span-1 py-3 my-auto hover:scale-110 cursor-pointer align-self-center">
-        <MuteButton isMuted={isMuted} _toggleMuteButton={_toggleMuteButton} />
+        <MuteButton playing={playing} _toggleMuteButton={_toggleMuteButton} />
       </div>
       <div className="-order-2 lg:order-7 col-span-6 lg:col-span-1 py-3 my-auto">
         <div className="py-3" id="google_translate_element" />

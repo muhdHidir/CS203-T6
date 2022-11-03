@@ -18,8 +18,8 @@ root.render(
 
   <BrowserRouter>
     <Suspense fallback={<LoadingSpinner />}>
-      {/* <App2 /> */}
-      <App />
+      <App2 />
+      {/* <App /> */}
     </Suspense>
   </BrowserRouter>
 );
