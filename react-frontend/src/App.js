@@ -22,7 +22,13 @@ import EventBus from "./common/EventBus";
 function App() {
   return (
     <div className="main">
-      <video src="https://tgi-bucket.s3.ap-southeast-1.amazonaws.com/bg_vid.mp4" type="video/mp4" autoPlay loop muted />
+      <video
+        src="https://tgi-bucket.s3.ap-southeast-1.amazonaws.com/bg_vid.mp4"
+        type="video/mp4"
+        autoPlay
+        loop
+        muted
+      />
       <div className="content">
         <NavBar />
 
@@ -41,7 +47,6 @@ function App() {
               <Route path="/game" element={<Game />} />
               <Route path="/gameover" element={<GameOver />} />
               <Route path="/gamewin" element={<GameWin />} />
-              
             </Routes>
           </AnimatePresence>
         </div>

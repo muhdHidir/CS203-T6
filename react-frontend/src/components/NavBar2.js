@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import "../css/barchart.css";
-import "../css/navbar.css";
+import "../css/navbar2.css";
+// import "../css/navbar.css";
 import LoginPopUp from "./LoginPopUp";
 
 import { MusicUpIcon, MusicOffIcon } from "../icons";
 import thegreeninvestor from "../assets/thegreeninvestor.png";
 import myMusic from "../assets/music.mp3";
-import MuteButton from "./MuteButton";
+import MuteButton from "./MuteButton2";
 
 import AuthService from "../services/auth.service";
 // import AuthVerify from "./common/auth-verify";
@@ -24,7 +25,7 @@ import EventBus from "../common/EventBus";
 //   // { value: 'ms', text: "Bahasa Melayu" },
 // ];
 
-export default function NavBar() {
+export default function NavBar2() {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
