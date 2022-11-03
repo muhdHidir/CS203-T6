@@ -5,7 +5,7 @@ import { variants } from "../assets/Animations";
 
 import DataMetric from "../components/DataMetric/DataMetric";
 import { CashIcon, MoraleIcon, SustainabilityIcon } from "../icons";
-import { Box, Grid, Text, Button } from "@mantine/core";
+import { Box, Grid, Text, Button, LoadingOverlay } from "@mantine/core";
 import { Input } from "@mantine/core";
 
 import authHeader from "../services/auth-header";
@@ -72,20 +72,22 @@ export default function Game() {
   //function to submit Answer to backend
   async function submitAnswer() {
     if (isOpenEnded) {
-      const response = await axios.post(
-        `http://localhost:8080/api/${question.id}/answer`,
-        {
-          //concatenate input1, input2 and input3 by comma
-          answer: inputValue1 + "," + inputValue2 + "," + inputValue3,
-          isOpenEnded: true,
-        },
-        {
-          headers: authHeader(),
-          "Content-Type": "application/json"
-        }
-      ).then((response) => {
-        console.log(response)
-      });
+      const response = await axios
+        .post(
+          `http://localhost:8080/api/${question.id}/answer`,
+          {
+            //concatenate input1, input2 and input3 by comma
+            answer: inputValue1 + "," + inputValue2 + "," + inputValue3,
+            isOpenEnded: true,
+          },
+          {
+            headers: authHeader(),
+            "Content-Type": "application/json",
+          }
+        )
+        .then((response) => {
+          console.log(response);
+        });
 
       //reset the input values
       setInputValue1("");
@@ -143,7 +145,17 @@ export default function Game() {
     options === undefined ||
     imageArray[imageIndex] === undefined
   ) {
-    return <>Still loading...</>;
+    return (
+      <Box className="bg-gray-50 bg-opacity-70 h-[85vh] rounded-xl align-middle relative w-full pt-2 pr-2 pl-2 pb-2">
+        <LoadingOverlay
+          
+          loaderProps={{ size: "xl", color: "black" }}
+          overlayOpacity={0.0}
+          overlayColor="#c5c5c5"
+          visible
+        />
+      </Box>
+    );
   }
 
   return (
@@ -162,12 +174,12 @@ export default function Game() {
                 {question.question}
               </Text>
               <img
-                className="h-[70%] w-[50%] text-center rounded-2xl drop-shadow-xl"
+                className="h-[70%] w-[40%] text-center rounded-2xl drop-shadow-xl"
                 src={require(`../assets/img${imageArray[imageIndex]}.jpg`)}
                 alt="new"
               />
             </Box>
-            {!isOpenEnded ?
+            {!isOpenEnded ? (
               <Box
                 size="md"
                 className="h-[45%] w-full flex flex-col items-center space-y-2"
@@ -254,40 +266,48 @@ export default function Game() {
                   Submit
                 </Button>
               </Box>
-              :
-              <Box>
-
-                Enter your answers
+            ) : (
+              <Box
+                size="md"
+                className="h-[45%] w-full flex flex-col items-center space-y-2"
+              >
+                <Text className="font-semibold text-lg ">
+                  Enter your answers
+                </Text>
                 <Input
-                  className="w-[80%] h-[90%] bg-gray-50 text-black"
+                  className="w-[80%] h-full bg-gray-50 text-black"
                   placeholder="Enter your answer here"
                   value={inputValue1}
                   onChange={(e) => setInputValue1(e.target.value)}
                 />
                 <Input
-                  className="w-[80%] h-[90%] bg-gray-50 text-black"
+                  className="w-[80%] h-full bg-gray-50 text-black"
                   placeholder="Enter your answer here"
                   value={inputValue2}
                   onChange={(e) => setInputValue2(e.target.value)}
                 />
                 <Input
-                  className="w-[80%] h-[90%] bg-gray-50 text-black"
+                  className="w-[80%] h-full bg-gray-50 text-black"
                   placeholder="Enter your answer here"
                   value={inputValue3}
                   onChange={(e) => setInputValue3(e.target.value)}
                 />
-
                 <Button
                   onClick={onClickHandler}
-                  // disabled={selectedOption === null ? true : false}
+                  disabled={
+                    inputValue1 === "" ||
+                    inputValue2 === "" ||
+                    inputValue3 === ""
+                      ? true
+                      : false
+                  }
                   size="md"
                   className="h-[90%] w-[15%] bg-darkGreen-50 text-white"
                 >
                   Submit
                 </Button>
-
               </Box>
-            }
+            )}
           </Grid.Col>
           <Grid.Col span={5} className="h-full w-full space-y-2">
             <Box className="h-[53%] w-full space-y-2">
