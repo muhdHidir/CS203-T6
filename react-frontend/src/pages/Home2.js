@@ -8,8 +8,8 @@ import { displayContent } from "../assets/LandingPageDisplayContent";
 
 import authService from "../services/auth.service";
 
-import "../css/home.css";
-// import "../css/home2.css";
+// import "../css/home.css";
+import "../css/home2.css";
 import { ScrollTip } from "../assets/images";
 
 // export default function Home() {

@@ -9,8 +9,10 @@
 
 .subheader,
 .text-content {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
+  /* background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px); */
   border-radius: 1rem;
 }
 
@@ -35,7 +37,7 @@
 .text-content {
   font-family: "Roboto", sans-serif;
   font-size: large;
-  text-align: justify !important;
+  text-align: justify;
 }
 
 .title {

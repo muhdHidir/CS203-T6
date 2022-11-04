@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
+import "../App2.css";
 import "../css/barchart.css";
 import "../css/navbar2.css";
 // import "../css/navbar.css";
@@ -80,10 +80,10 @@ export default function NavBar2() {
   }
 
   function _toggleMuteButton() {
-    var myAudio = document.getElementById("audio_player");
-    myAudio.muted = !myAudio.muted;
-
-    setPause(!playing);
+    // var myAudio = document.getElementById("audio_player");
+    // myAudio.muted = !myAudio.muted;
+    setPause((s) => !s);
+    // setPause(!playing);
   }
   const googleTranslateElementInit = () => {
     var duplicate_google_translate_counter = 0;
@@ -143,8 +143,7 @@ export default function NavBar2() {
 
   return (
     // Fixed size that NavBar will take up
-    <div className="nav-container lg:h-20 fixed w-full text-white text-m grid grid-cols-12 z-20 ">
-      {/* Hidden Audio Player - DO LATER */}
+    <div className="nav-container lg:h-20 fixed w-full text-white text-m grid grid-cols-12 z-20 my-auto py-auto">
       <audio
         id="audio_player"
         autoPlay
@@ -152,11 +151,14 @@ export default function NavBar2() {
         // controls
       >
         <source src={myMusic} type="audio/mp3" />
-        {/* <source src={null} type="audio/mp3" /> */}
       </audio>
 
       {/* Home and Leaderboard, keep at leftmost except for mobile, which will be below title */}
-      <div className="order-3 lg:-order-1 text-md col-span-12 lg:col-span-4 py-3 my-auto text-center grid grid-cols-2">
+      <div
+        className="order-3 col-span-12 grid grid-cols-2
+                  lg:-order-1 lg:col-span-4
+                  text-md my-auto pb-2 text-center"
+      >
         <Link to={"/home"} className="cursor-pointer hover:scale-110">
           Home
         </Link>
@@ -179,33 +181,49 @@ export default function NavBar2() {
       </div>
 
       {/* Title, keep at Center, except mobile, which will be below lang/music */}
-      <span className="lg:order-4 -order-1 logo my-auto col-span-12 lg:col-span-4 text-center">
+      <span
+        className="navbar-title -order-1 col-span-12
+                  lg:py-4 lg:col-span-4 lg:order-4 
+                  my-auto text-center"
+      >
         The Green Investor
       </span>
 
       {/* Lang & Music, keep at right, before login but at top for mobile */}
       {/* music button, ADD MUSIC LATER */}
-      <div className="-order-3 lg:order-6 col-span-6 lg:col-span-1 py-3 my-auto hover:scale-110 cursor-pointer align-self-center">
+      <div
+        className="-order-3 col-span-6 
+                  lg:order-6 lg:col-span-2 
+                  xl:col-span-1 
+                  hover:scale-110 m-auto cursor-pointer"
+      >
         <MuteButton playing={playing} _toggleMuteButton={_toggleMuteButton} />
       </div>
-      <div className="-order-2 lg:order-7 col-span-6 lg:col-span-1 py-3 my-auto">
-        <div className="py-3" id="google_translate_element" />
-      </div>
+      <div
+        className="-order-2 col-span-6 
+                  lg:order-last lg:col-end-12 lg:col-span-1 
+                  xl:order-7 xl:col-span-1
+                  pt-5 pl-auto mx-auto"
+        id="google_translate_element"
+      />
 
       {/* Login, keep at rightmost at all times */}
       {/* Log in, log out */}
-      <div className="order-last col-span-12 col-start-7 lg:col-span-2 py-3 m-auto text-center">
+      <div
+        className="order-last col-span-12 
+                  lg:col-span-2 
+                  my-auto text-center lg:pt-0 "
+      >
         {/* when user is logged in */}
         {currentUser ? (
-          <div className="col-span-1 grid grid-cols-2">
+          <div className="grid grid-cols-2">
             <Link
               to={"/profile"}
-              className="cursor-pointer my-auto hover:scale-110"
+              className="cursor-pointer hover:scale-110 m-auto "
             >
               {currentUser.username}
-              {/* test */}
             </Link>
-            <div className="cursor-pointer my-auto hover:scale-110">
+            <div className="cursor-pointer hover:scale-110 m-auto ">
               <a href="/home" onClick={logOut}>
                 {t("home-logout")}
               </a>
@@ -213,10 +231,7 @@ export default function NavBar2() {
           </div>
         ) : (
           // when user is not logged in
-          // when user is not logged in
-          <div className="col-end-1" class="notranslate">
-            <LoginPopUp class="notranslate" />
-          </div>
+          <LoginPopUp class="notranslate" />
         )}
       </div>
     </div>
