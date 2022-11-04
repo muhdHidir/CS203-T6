@@ -8,16 +8,21 @@ Our web application can be accessed via https://www.TheGreenInvestor.com, and wi
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine. 
+The Green Investor Project consists of 2 parts, which can be found in the 'react-frontend' and 'G2-T6' folders.2. The 
+1. The Green Investor API Server (Springboot)
+2. The Green Investor Web Application (React)
+
+The following instructions will get you a copy of the project up and running on your local machine. 
 
 ### Prerequisites
 
-- NodeJS
-- Java JDK 17
+`NodeJS 16+`
+`Java JDK 17+`
+`Maven 3.8.6+`
 
 ### Deployment
 
-The RESTFUL backend api that was built with Spring can be executed with the following command. 
+The backend API server that was built with Spring can be executed with the following command. 
 
 ```
 mvnw spring-boot:run
@@ -35,13 +40,13 @@ In the event of an error pertaining to missing 'react scripts', run the followin
 npm install react-scripts --save
 ```
 
-The RESTFUL api will be running on port 8081, alongside the frontend on port 8080. The port numbers can be configured on xxx1.file and xxx2.file.
+The backend API will be running on port 8081, alongside the frontend on port 8080. The port numbers can be configured on xxx1.file and xxx2.file.
 
 ## Built With
 
-* [SpringBoot](https://spring.io/) - The Jave framework used for our api architecture
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [SpringBoot](https://spring.io/) - The Java framework used for our api architecture
 * [React](https://reactjs.org/) - The framework used for our web app interface
+* [Maven](https://maven.apache.org/) - Dependency Management
 
 ## Authors
 
@@ -51,5 +56,3 @@ The RESTFUL api will be running on port 8081, alongside the frontend on port 808
 * Muhammad Hidir Bin Abdul Rahim
 * Su Liheng Benjamin
 * Yogesh Adhi Narayan
-
-
