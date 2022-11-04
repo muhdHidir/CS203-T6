@@ -1,5 +1,9 @@
 # The Green Investor - A Sustainability Game (CS203 G2-T6)
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/muhdHidir/CS203-T6/main/Poster.png" width="50%"/>
+</p>
+
 The Green Investor is a turn-based business simulation trivia game that will require you to balance your company's profitability and sustainability. This project was developed by a group of students from Singapore Management University (SMU), as part of our CS203 Collaborative Software Development Project.
 
 As part of this years project theme, 'Climate Change', The Green Investor aims to educate potential retail investors about the opportunities and challenges of sustainable investing. To prevent further irreversible impacts on the planet, businesses must take more initiative in preventing climate change. Hence, it is crucial that companies adapt and evolve their business into a sustainable model.
@@ -56,3 +60,4 @@ The backend API will be running on port 8081, alongside the frontend on port 808
 * Muhammad Hidir Bin Abdul Rahim
 * Su Liheng Benjamin
 * Yogesh Adhi Narayan
+
