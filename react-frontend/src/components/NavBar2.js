@@ -157,13 +157,19 @@ export default function NavBar2() {
       <div
         className="order-3 col-span-12 grid grid-cols-2
                   lg:-order-1 lg:col-span-4
-                  text-md my-auto pb-2 text-center"
+                  text-md my-auto pt-2 lg:pt-0 pb-2 text-center"
       >
-        <Link to={"/home"} className="cursor-pointer hover:scale-110">
+        <Link
+          to={"/home"}
+          className="col-span-2 lg:col-span-1 py-2 md:py-0 cursor-pointer hover:scale-110"
+        >
           Home
         </Link>
 
-        <Link to={"/leaderboard"} className="cursor-pointer hover:scale-110">
+        <Link
+          to={"/leaderboard"}
+          className="col-span-2 lg:col-span-1 py-2 md:py-0 cursor-pointer hover:scale-110"
+        >
           {t("home-leaderboard")}
         </Link>
 
@@ -192,27 +198,25 @@ export default function NavBar2() {
       {/* Lang & Music, keep at right, before login but at top for mobile */}
       {/* music button, ADD MUSIC LATER */}
       <div
-        className="-order-3 col-span-6 
-                  lg:order-6 lg:col-span-2 
-                  xl:col-span-1 
-                  hover:scale-110 m-auto cursor-pointer"
+        className="grid grid-cols-2 
+                  -order-3 col-span-12
+                  lg:order-6 lg:col-span-2 xl:col-span-2
+                  my-auto pt-2 lg:pt-0 pb-2 text-center
+      "
       >
-        <MuteButton playing={playing} _toggleMuteButton={_toggleMuteButton} />
+        <div className="music-button hover:scale-110 m-auto cursor-pointer">
+          <MuteButton playing={playing} _toggleMuteButton={_toggleMuteButton} />
+        </div>
+        <div className="" id="google_translate_element" />
       </div>
-      <div
-        className="-order-2 col-span-6 
-                  lg:order-last lg:col-end-12 lg:col-span-1 
-                  xl:order-7 xl:col-span-1
-                  pt-5 pl-auto mx-auto"
-        id="google_translate_element"
-      />
 
       {/* Login, keep at rightmost at all times */}
       {/* Log in, log out */}
+
       <div
-        className="order-last col-span-12 
-                  lg:col-span-2 
-                  my-auto text-center lg:pt-0 "
+        className="order-last col-span-12
+                  lg:col-span-2 w-auto
+                  my-auto text-center"
       >
         {/* when user is logged in */}
         {currentUser ? (
