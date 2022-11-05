@@ -4,7 +4,6 @@ import "./index.css";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 import App from "./App";
-import App2 from "./App2";
 import * as serviceWorker from "./serviceWorker";
 
 import React, { Suspense } from "react";
@@ -18,8 +17,7 @@ root.render(
 
   <BrowserRouter>
     <Suspense fallback={<LoadingSpinner />}>
-      <App2 />
-      {/* <App /> */}
+      <App />
     </Suspense>
   </BrowserRouter>
 );

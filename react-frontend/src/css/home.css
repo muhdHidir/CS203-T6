@@ -4,13 +4,25 @@
 .container {
   color: white;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
+}
+
+.container-content {
+  transform: translateY(-20vh);
+}
+
+@media screen and (min-width: 1024px) {
+  .container-content {
+    transform: translateY(0vh);
+  }
 }
 
 .subheader,
 .text-content {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
+  /* background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px); */
   border-radius: 1rem;
 }
 
@@ -19,10 +31,9 @@
 }
 
 .test-container {
-  height: auto;
-  width: 100%;
-  justify-content: center;
-  background-color: aqua;
+  /* height: auto;
+  width: 100%; */
+  /* justify-content: center; */
 }
 
 /* Font */
@@ -35,7 +46,7 @@
 .text-content {
   font-family: "Roboto", sans-serif;
   font-size: large;
-  text-align: justify !important;
+  text-align: justify;
 }
 
 .title {

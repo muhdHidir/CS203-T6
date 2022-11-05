@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { variants } from "../assets/Animations";
 
 import Login from "./Login";
-import Login2 from "./Login2";
+import Login2 from "./Login";
 
 const LoginPopUp = () => (
   <Popup

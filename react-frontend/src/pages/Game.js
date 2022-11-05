@@ -7,6 +7,7 @@ import DataMetric from "../components/DataMetric/DataMetric";
 import { CashIcon, MoraleIcon, SustainabilityIcon } from "../icons";
 import { Box, Grid, Text, Button, LoadingOverlay } from "@mantine/core";
 import { Input } from "@mantine/core";
+import "../css/game.css";
 
 import authHeader from "../services/auth-header";
 
@@ -148,7 +149,6 @@ export default function Game() {
     return (
       <Box className="bg-gray-50 bg-opacity-70 h-[85vh] rounded-xl align-middle relative w-full pt-2 pr-2 pl-2 pb-2">
         <LoadingOverlay
-          
           loaderProps={{ size: "xl", color: "black" }}
           overlayOpacity={0.0}
           overlayColor="#c5c5c5"
@@ -164,190 +164,182 @@ export default function Game() {
       animate="visible"
       exit="hidden"
       variants={variants}
+      className="main-container"
     >
       <ReviewModal opened={opened} handleClose={closeHandler} />
-      <Box className="bg-gray-50 bg-opacity-70 h-[85vh] rounded-xl align-middle w-full pt-2 pr-2 pl-2 pb-2">
-        <Grid className="h-full w-full">
-          <Grid.Col span={7} className="h-full">
-            <Box className="h-[55%] w-full flex flex-col items-center space-y-4">
-              <Text className="text-center font-semibold text-xl">
-                {question.question}
-              </Text>
+      <Box className="game-container grid grid-cols-12 bg-gray-50 bg-opacity-70 rounded-lg align-middle p-2 m-2 text-center">
+        {/* Question and options */}
+        <div className="quiz-container col-span-12 md:col-span-7 grid grid-rows-2 md:mr-5">
+          <div className="question-container grid grid-rows-6">
+            <div className="question-number font-semibold">
+              {question.question}
+            </div>
+            <div className="question-image row-span-5 mt-2 ">
               <img
-                className="h-[70%] w-[40%] text-center rounded-2xl drop-shadow-xl"
+                className="rounded-2xl drop-shadow-xl mx-auto"
                 src={require(`../assets/img${imageArray[imageIndex]}.jpg`)}
                 alt="new"
               />
-            </Box>
-            {!isOpenEnded ? (
-              <Box
+            </div>
+          </div>
+          {!isOpenEnded ? (
+            <div className="options-container items-center mt-5 space-y-2">
+              <Button
+                onClick={() => setSelectedOption(0)}
                 size="md"
-                className="h-[45%] w-full flex flex-col items-center space-y-2"
+                className={
+                  selectedOption === 0
+                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white"
+                    : " w-[100%]  opacity-80 bg-gray-50 text-black"
+                }
+                styles={(theme) => ({
+                  root: {
+                    "&:hover": {
+                      backgroundColor: theme.fn.darken("#245A44", 0.05),
+                    },
+                  },
+                })}
               >
-                <Button
-                  onClick={() => setSelectedOption(0)}
-                  size="md"
-                  className={
-                    selectedOption === 0
-                      ? "w-[80%] h-full opacity-80 bg-darkGreen-50 text-white"
-                      : " w-[80%] h-full opacity-80 bg-gray-50 text-black"
-                  }
-                  styles={(theme) => ({
-                    root: {
-                      "&:hover": {
-                        backgroundColor: theme.fn.darken("#245A44", 0.05),
-                      },
+                {options[0].option}
+              </Button>
+              <Button
+                onClick={() => setSelectedOption(1)}
+                size="md"
+                className={
+                  selectedOption === 1
+                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white"
+                    : " w-[100%]  opacity-80 bg-gray-50 text-black"
+                }
+                styles={(theme) => ({
+                  root: {
+                    "&:hover": {
+                      backgroundColor: theme.fn.darken("#245A44", 0.05),
                     },
-                  })}
-                >
-                  {options[0].option}
-                </Button>
-                <Button
-                  onClick={() => setSelectedOption(1)}
-                  size="md"
-                  className={
-                    selectedOption === 1
-                      ? "w-[80%] h-full opacity-80 bg-darkGreen-50 text-white"
-                      : " w-[80%] h-full opacity-80 bg-gray-50 text-black"
-                  }
-                  styles={(theme) => ({
-                    root: {
-                      "&:hover": {
-                        backgroundColor: theme.fn.darken("#245A44", 0.05),
-                      },
+                  },
+                })}
+              >
+                {options[1].option}
+              </Button>
+              <Button
+                onClick={() => setSelectedOption(2)}
+                size="md"
+                className={
+                  selectedOption === 2
+                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white"
+                    : " w-[100%]  opacity-80 bg-gray-50 text-black"
+                }
+                styles={(theme) => ({
+                  root: {
+                    "&:hover": {
+                      backgroundColor: theme.fn.darken("#245A44", 0.05),
                     },
-                  })}
-                >
-                  {options[1].option}
-                </Button>
-                <Button
-                  onClick={() => setSelectedOption(2)}
-                  size="md"
-                  className={
-                    selectedOption === 2
-                      ? "w-[80%] h-full opacity-80 bg-darkGreen-50 text-white"
-                      : " w-[80%] h-full opacity-80 bg-gray-50 text-black"
-                  }
-                  styles={(theme) => ({
-                    root: {
-                      "&:hover": {
-                        backgroundColor: theme.fn.darken("#245A44", 0.05),
-                      },
+                  },
+                })}
+              >
+                {options[2].option}
+              </Button>
+              <Button
+                onClick={() => setSelectedOption(3)}
+                size="md"
+                className={
+                  selectedOption === 3
+                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white"
+                    : " w-[100%]  opacity-80 bg-gray-50 text-black"
+                }
+                styles={(theme) => ({
+                  root: {
+                    "&:hover": {
+                      backgroundColor: theme.fn.darken("#245A44", 0.05),
                     },
-                  })}
-                >
-                  {options[2].option}
-                </Button>
-                <Button
-                  onClick={() => setSelectedOption(3)}
-                  size="md"
-                  className={
-                    selectedOption === 3
-                      ? "w-[80%] h-full opacity-80 bg-darkGreen-50 text-white"
-                      : " w-[80%] h-full opacity-80 bg-gray-50 text-black"
-                  }
-                  styles={(theme) => ({
-                    root: {
-                      "&:hover": {
-                        backgroundColor: theme.fn.darken("#245A44", 0.05),
-                      },
-                    },
-                  })}
-                >
-                  {options[3].option}
-                </Button>
+                  },
+                })}
+              >
+                {options[3].option}
+              </Button>
 
-                <Button
-                  onClick={onClickHandler}
-                  disabled={selectedOption === null ? true : false}
-                  size="md"
-                  className="h-[90%] w-[15%] bg-darkGreen-50 text-white"
-                >
-                  Submit
-                </Button>
-              </Box>
-            ) : (
-              <Box
+              <Button
+                onClick={onClickHandler}
+                disabled={selectedOption === null ? true : false}
                 size="md"
-                className="h-[45%] w-full flex flex-col items-center space-y-2"
+                className="submit-button w-[45%] bg-darkGreen-50 text-white mt-5"
               >
-                <Text className="font-semibold text-lg ">
-                  Enter your answers
-                </Text>
-                <Input
-                  className="w-[80%] h-full bg-gray-50 text-black"
-                  placeholder="Enter your answer here"
-                  value={inputValue1}
-                  onChange={(e) => setInputValue1(e.target.value)}
-                />
-                <Input
-                  className="w-[80%] h-full bg-gray-50 text-black"
-                  placeholder="Enter your answer here"
-                  value={inputValue2}
-                  onChange={(e) => setInputValue2(e.target.value)}
-                />
-                <Input
-                  className="w-[80%] h-full bg-gray-50 text-black"
-                  placeholder="Enter your answer here"
-                  value={inputValue3}
-                  onChange={(e) => setInputValue3(e.target.value)}
-                />
-                <Button
-                  onClick={onClickHandler}
-                  disabled={
-                    inputValue1 === "" ||
-                    inputValue2 === "" ||
-                    inputValue3 === ""
-                      ? true
-                      : false
-                  }
-                  size="md"
-                  className="h-[90%] w-[15%] bg-darkGreen-50 text-white"
-                >
-                  Submit
-                </Button>
-              </Box>
-            )}
-          </Grid.Col>
-          <Grid.Col span={5} className="h-full w-full space-y-2">
-            <Box className="h-[53%] w-full space-y-2">
+                Submit
+              </Button>
+            </div>
+          ) : (
+            <div className="options-container flex-col items-center mt-5 space-y-2">
+              <Text className="font-semibold text-lg ">Enter your answers</Text>
+              <Input
+                className="w-[100%] bg-gray-50 text-black"
+                placeholder="Enter your answer here"
+                value={inputValue1}
+                onChange={(e) => setInputValue1(e.target.value)}
+              />
+              <Input
+                className="w-[100%] bg-gray-50 text-black"
+                placeholder="Enter your answer here"
+                value={inputValue2}
+                onChange={(e) => setInputValue2(e.target.value)}
+              />
+              <Input
+                className="w-[100%] bg-gray-50 text-black"
+                placeholder="Enter your answer here"
+                value={inputValue3}
+                onChange={(e) => setInputValue3(e.target.value)}
+              />
+              <Button
+                onClick={onClickHandler}
+                disabled={
+                  inputValue1 === "" || inputValue2 === "" || inputValue3 === ""
+                    ? true
+                    : false
+                }
+                size="md"
+                className="submit-button w-[45%] bg-darkGreen-50 text-white mt-5"
+              >
+                Submit
+              </Button>
+            </div>
+          )}
+        </div>
+        {/* Graphs */}
+        <div className="graph-container col-span-12 md:col-span-5 grid grid-row-2 space-y-4">
+          <Box className="graph-cash-container ">
+            <DataMetric
+              className="h-[53%] w-full "
+              hasChart={true}
+              icon={<CashIcon color="grey" className="text-xl" />}
+              increment={5}
+              value={cashChartData[cashChartData.length - 1]}
+              unit={"SGD"}
+              label="Cash"
+              chartData={cashChartData}
+            />
+          </Box>
+
+          <Box className="graph-etc-container flex flex-row ">
+            <Box className="w-1/2 pr-1">
               <DataMetric
-                hasChart={true}
-                icon={<CashIcon color="grey" className="text-xl" />}
-                increment={5}
-                value={cashChartData[cashChartData.length - 1]}
-                unit={"SGD"}
-                label="Cash"
-                chartData={cashChartData}
+                increment={-5}
+                icon={<MoraleIcon color="grey" className="text-xl" />}
+                value={moraleChartData[0]}
+                unit={"%"}
+                label="Morale"
+                chartData={moraleChartData}
               />
             </Box>
-
-            <Box className="h-[47%] w-full flex flex-row space-x-2">
-              <Box className="h-full w-1/2">
-                <DataMetric
-                  className="w-1/2"
-                  increment={-5}
-                  icon={<MoraleIcon color="grey" className="text-xl" />}
-                  value={moraleChartData[0]}
-                  unit={"%"}
-                  label="Morale"
-                  chartData={moraleChartData}
-                />
-              </Box>
-              <Box className="h-full w-1/2">
-                <DataMetric
-                  className="w-1/2"
-                  icon={<SustainabilityIcon color="grey" className="text-xl" />}
-                  increment={7}
-                  value={sustainabilityChartData[0]}
-                  unit={"%"}
-                  label="Sustainability"
-                  chartData={sustainabilityChartData}
-                />
-              </Box>
+            <Box className="w-1/2 pl-1">
+              <DataMetric
+                icon={<SustainabilityIcon color="grey" className="text-xl" />}
+                increment={7}
+                value={sustainabilityChartData[0]}
+                unit={"%"}
+                label="Sustainability"
+                chartData={sustainabilityChartData}
+              />
             </Box>
-          </Grid.Col>
-        </Grid>
+          </Box>
+        </div>
       </Box>
     </motion.div>
   );
