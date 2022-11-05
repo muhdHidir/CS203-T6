@@ -76,11 +76,8 @@ export default function Home2() {
 
   return (
     <div className="container">
-      <div className="">
-        <Parallax
-          speed={40}
-          className="screen1 flex flex-col justify-between items-center"
-        >
+      <div className="container-content">
+        <Parallax className="screen1 flex flex-col justify-between items-center">
           <span />
           <h1 className="center bounce title mt-10 self-center shadow-xl border-t-4 border-b-4 text-center">
             Welcome to the Sustainability Game
