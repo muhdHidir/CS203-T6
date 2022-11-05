@@ -66,16 +66,22 @@ label {
 
 .content {
   position: absolute;
-  width: 100%;
+  width: 100vw;
+  /* width: 100vw; */
   /* Height = 100% - height of navbar */
   height: calc(100%-25vh);
   top: 30vh;
   z-index: 10;
   /* To hide scrollable content below navbar */
   overflow-y: scroll;
+  overflow-x: hidden;
   /* Hides miniscrollbar that appears when overflow is used */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.content::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (min-width: 1024px) {
@@ -88,10 +94,6 @@ label {
   .content {
     height: calc(100%-10vh);
   }
-}
-
-.content::-webkit-scrollbar {
-  display: none;
 }
 
 @media screen and (min-width: 1024px) {

@@ -75,11 +75,11 @@ export default function Home2() {
   }
 
   return (
-    <div className="container">
+    <div className="container text-center">
       <div className="container-content">
         <Parallax className="screen1 flex flex-col justify-between items-center">
           <span />
-          <h1 className="center bounce title mt-10 self-center shadow-xl border-t-4 border-b-4 text-center">
+          <h1 className="center bounce title mt-10 self-center shadow-xl border-t-4 border-b-4 ">
             Welcome to the Sustainability Game
           </h1>
 
@@ -99,7 +99,7 @@ export default function Home2() {
             />
           </Parallax> */}
 
-        <div className="screen2 h-screen ">
+        <div className="screen2 h-screen">
           {/* <Parallax speed={-30}>
             <img
               src={Leaf1}
@@ -108,38 +108,29 @@ export default function Home2() {
               alt=""
             />
           </Parallax> */}
-          <div className="text-container grid grid-cols-3 text-center curve ">
-            <Parallax translateX={[-20, 10]} className="subheader m-auto p-3">
+          <div className="text-container grid grid-rows-3 h-full">
+            <Parallax
+              // translateX={[-20, 10]}
+              className="subheader m-auto p-3 m-3"
+            >
               {subheaders[0]}
             </Parallax>
-            <span className="flex-1" />
             <Parallax
-              translateX={[20, -10]}
-              className="text-content m-auto p-3  "
+              // translateX={[20, -10]}
+              className="text-content p-3 my-auto mt-5 row-span-2"
             >
               {displayContent[0].src}
             </Parallax>
           </div>
         </div>
         <div className="screen3 h-screen">
-          <div className="text-container test-container text-center">
-            {subheaders[1]}
-            {displayContent[1].src}
-            {/* <Parallax
-              speed={20}
-              translateX={[-30, 10]}
-              className="text-content m-auto p-3"
-            >
+          <div className="text-container grid grid-rows-3 md:grid-cols-3 h-full">
+            <Parallax className="subheader m-auto p-3">
+              {subheaders[1]}
+            </Parallax>
+            <Parallax className="text-content p-3 my-auto md:ml-5 row-span-2 md:col-span-2">
               {displayContent[1].src}
             </Parallax>
-            <span className="flex-1" />
-            <Parallax
-              // speed={20}
-              translateX={[20, -20]}
-              className="subheader m-auto p-3"
-            >
-              {subheaders[1]}
-            </Parallax> */}
           </div>
 
           {/* <Parallax speed={-20} translateX={[0, -100]}>
@@ -153,18 +144,18 @@ export default function Home2() {
           </Parallax> */}
         </div>
         <div className="screen4 h-screen">
-          <div className="text-container grid grid-cols-3 text-center">
+          <div className="text-container grid grid-rows-3 md:grid-cols-3 h-full">
             <Parallax
               // speed={20}
-              translateX={[-20, 30]}
-              className="subheader m-auto p-3"
+              // translateX={[-20, 30]}
+              className="subheader p-3 m-auto "
             >
               {subheaders[2]}
             </Parallax>
             <Parallax
-              speed={20}
-              translateX={[20, -30]}
-              className="text-content m-auto p-3"
+              // speed={20}
+              // translateX={[20, -30]}
+              className="text-content md:order-first p-3 my-auto md:mr-5 row-span-2 md:col-span-2"
             >
               {displayContent[2].src}
             </Parallax>
@@ -172,8 +163,8 @@ export default function Home2() {
         </div>
         <div className="screen5 h-screen">
           <Parallax
-            translateY={[-20, 30]}
-            className="h-screen items-center grid grid-rows-3 text-center"
+            // translateY={[-20, 30]}
+            className="h-screen items-center grid grid-rows-3 "
           >
             <div className="subheader m-auto p-3">{subheaders[3]}</div>
             <div className="text-content m-auto p-3">

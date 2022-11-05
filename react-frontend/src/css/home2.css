@@ -31,10 +31,9 @@
 }
 
 .test-container {
-  height: auto;
-  width: 100%;
-  justify-content: center;
-  background-color: aqua;
+  /* height: auto;
+  width: 100%; */
+  /* justify-content: center; */
 }
 
 /* Font */
