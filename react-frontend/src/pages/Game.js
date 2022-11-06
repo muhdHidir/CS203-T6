@@ -304,10 +304,9 @@ export default function Game() {
           )}
         </div>
         {/* Graphs */}
-        <div className="graph-container col-span-12 md:col-span-5 grid grid-row-2 space-y-4">
+        <div className="graph-container col-span-12 md:col-span-5 grid grid-row-2 ">
           <Box className="graph-cash-container ">
             <DataMetric
-              className="h-[53%] w-full "
               hasChart={true}
               icon={<CashIcon color="grey" className="text-xl" />}
               increment={5}

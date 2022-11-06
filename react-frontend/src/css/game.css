@@ -3,12 +3,13 @@
 }
 
 .game-container {
-  height: 165vh;
+  /* ()00vh-30vh) * 2*/
+  height: 140vh;
 }
 
-.quiz-container,
-.graph-container {
-  height: 60%;
+.graph-cash-container,
+.graph-etc-container {
+  margin-bottom: 5%;
 }
 
 .question-number {
@@ -17,11 +18,6 @@
 
 .question-image {
   max-height: 220px;
-}
-
-.options-container {
-  /* margin-top: 2%; */
-  box-sizing: border-box;
 }
 
 .options-container > Button {
@@ -36,11 +32,13 @@
   width: 65%;
 }
 
-.graph-cash-container,
-.graph-etc-container {
-  /* width: 98%; */
-  max-width: 98%;
-  max-height: 100%;
+.quiz-container,
+.graph-container {
+  height: 60%;
+}
+
+.graph-container {
+  grid-auto-rows: max(32vh);
 }
 
 @media screen and (min-width: 375px) {
@@ -58,8 +56,10 @@
 }
 
 @media screen and (min-width: 768px) {
-  .main-container .game-container {
+  .main-container,
+  .game-container {
     height: 65vh;
+    overflow: hidden;
   }
 
   .quiz-container,
@@ -67,8 +67,10 @@
     height: 85%;
   }
   .options-container > Button {
-    font-size: 16px;
-    height: 70%;
+    font-size: 2vw;
+    overflow-wrap: break-word;
+    /* font-size: 16px; */
+    height: 100%;
   }
   .question-image {
     max-height: 200px;
@@ -79,6 +81,10 @@
   .quiz-container,
   .graph-container {
     height: 100%;
+  }
+
+  .graph-container {
+    grid-auto-rows: max(42vh);
   }
 
   .question-image {
@@ -93,13 +99,9 @@
   .question-number {
     font-size: 1.25rem;
   }
-  .main-container .game-container {
+  .main-container,
+  .game-container {
     height: 85vh;
-  }
-  .graph-cash-container,
-  .graph-etc-container {
-    height: 40%;
-    /* width: 40vw; */
   }
 }
 
