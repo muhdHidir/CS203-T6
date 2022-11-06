@@ -24,9 +24,10 @@ export default function BarChart({ data, morale, year }) {
 
   const [state, setState] = useState({
     labels: ["Year " + (year + 1)],
-    data: morale ? [65] : [150],
+    data: data,
   });
 
+  //function for the updating of charts when there is a submission of a response
   useEffect(() => {
     if (didMount.current) {
       setState({

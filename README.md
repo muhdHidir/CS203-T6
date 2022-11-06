@@ -10,6 +10,11 @@ As part of this years project theme, 'Climate Change', The Green Investor aims t
 
 Our web application can be accessed via https://www.TheGreenInvestor.com, and will be hosted online until the end of our academic term. The source code will continue being publicly available and instructions to run the web app locally is listed below.
 
+## Application Architecture Diagram
+<p align="center">
+    <img src="https://raw.githubusercontent.com/muhdHidir/CS203-T6/main/SoftwareArchitecture.png" width="100%"/>
+</p>
+
 ## Getting Started
 
 The Green Investor Project consists of 2 parts, which can be found in the 'react-frontend' and 'G2-T6' folders.2. The 
