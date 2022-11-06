@@ -10,16 +10,14 @@
   width: 100vw;
   margin-top: calc(var(--navbar-height) + 1rem);
   z-index: 10;
-  /* 
-  To hide scrollable content below navbar
+
+  /* To hide scrollable content below navbar */
   overflow-y: scroll;
   overflow-x: hidden;
-  
-  Hides miniscrollbar that appears when overflow is used
 
+  /* Hides miniscrollbar that appears when overflow is used */
   -ms-overflow-style: none;
   scrollbar-width: none;
-  */
 }
 
 .content::-webkit-scrollbar {

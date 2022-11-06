@@ -43,7 +43,7 @@ export default function BarChart({ data }) {
   return (
     <Bar
       options={{
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false,
         plugins: {
           legend: {

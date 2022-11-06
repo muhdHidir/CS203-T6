@@ -26,7 +26,7 @@ ChartJS.register(
 
 export default function LineChart({ data }) {
   const didMount = useRef(false);
-  
+
   const [yearNumber, setYearNumber] = useState(2);
   const [labels, setLabels] = useState(["Year 0", "Year 1"]);
   const [state, setState] = useState({
@@ -38,7 +38,7 @@ export default function LineChart({ data }) {
     if (didMount.current) {
       setYearNumber(yearNumber + 1);
       setLabels((prevState) => [...prevState, `Year ${yearNumber}`]);
-      
+
       setState({
         labels: labels,
         data: data,
@@ -48,12 +48,11 @@ export default function LineChart({ data }) {
     }
   }, [data]);
 
-
   return (
     <div className="h-full">
       <Line
         options={{
-          responsive: true,
+          responsive: false,
           maintainAspectRatio: false,
           plugins: {
             legend: {

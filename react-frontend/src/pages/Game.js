@@ -159,13 +159,14 @@ export default function Game() {
   }
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-      variants={variants}
-      className="main-container"
-    >
+    // <motion.div
+    //   initial="hidden"
+    //   animate="visible"
+    //   exit="hidden"
+    //   variants={variants}
+    //   className="main-container"
+    // >
+    <div className="main-container">
       <ReviewModal opened={opened} handleClose={closeHandler} />
       <Box className="game-container grid grid-cols-12 bg-gray-50 bg-opacity-70 rounded-lg align-middle p-2 m-2 text-center">
         {/* Question and options */}
@@ -183,14 +184,14 @@ export default function Game() {
             </div>
           </div>
           {!isOpenEnded ? (
-            <div className="options-container items-center mt-5 space-y-2">
+            <div className="options-container items-center grid grid-rows-5">
               <Button
                 onClick={() => setSelectedOption(0)}
-                size="md"
+                size="xl"
                 className={
                   selectedOption === 0
-                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white"
-                    : " w-[100%]  opacity-80 bg-gray-50 text-black"
+                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white center"
+                    : " w-[100%]  opacity-80 bg-gray-50 text-black center"
                 }
                 styles={(theme) => ({
                   root: {
@@ -204,11 +205,11 @@ export default function Game() {
               </Button>
               <Button
                 onClick={() => setSelectedOption(1)}
-                size="md"
+                size="xl"
                 className={
                   selectedOption === 1
-                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white"
-                    : " w-[100%]  opacity-80 bg-gray-50 text-black"
+                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white center"
+                    : " w-[100%]  opacity-80 bg-gray-50 text-black center"
                 }
                 styles={(theme) => ({
                   root: {
@@ -222,11 +223,11 @@ export default function Game() {
               </Button>
               <Button
                 onClick={() => setSelectedOption(2)}
-                size="md"
+                size="xl"
                 className={
                   selectedOption === 2
-                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white"
-                    : " w-[100%]  opacity-80 bg-gray-50 text-black"
+                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white center"
+                    : " w-[100%]  opacity-80 bg-gray-50 text-black center"
                 }
                 styles={(theme) => ({
                   root: {
@@ -240,11 +241,11 @@ export default function Game() {
               </Button>
               <Button
                 onClick={() => setSelectedOption(3)}
-                size="md"
+                size="xl"
                 className={
                   selectedOption === 3
-                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white"
-                    : " w-[100%]  opacity-80 bg-gray-50 text-black"
+                    ? "w-[100%]  opacity-80 bg-darkGreen-50 text-white center"
+                    : " w-[100%]  opacity-80 bg-gray-50 text-black center"
                 }
                 styles={(theme) => ({
                   root: {
@@ -260,8 +261,8 @@ export default function Game() {
               <Button
                 onClick={onClickHandler}
                 disabled={selectedOption === null ? true : false}
-                size="md"
-                className="submit-button w-[45%] bg-darkGreen-50 text-white mt-5"
+                size="xl"
+                className="submit-button w-[50%] bg-darkGreen-50 text-white center"
               >
                 Submit
               </Button>
@@ -294,8 +295,8 @@ export default function Game() {
                     ? true
                     : false
                 }
-                size="md"
-                className="submit-button w-[45%] bg-darkGreen-50 text-white mt-5"
+                size="xl"
+                className="submit-button w-[45%] bg-darkGreen-50 text-black mt-5"
               >
                 Submit
               </Button>
@@ -341,6 +342,7 @@ export default function Game() {
           </Box>
         </div>
       </Box>
-    </motion.div>
+    </div>
+    // </motion.div>
   );
 }
