@@ -102,14 +102,14 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 
           // authentication for question & option API calls
           .antMatchers(HttpMethod.GET, "/api/questions/**", "/api/questions/*/options").permitAll()
-          .antMatchers(HttpMethod.POST,"/api/questions", "/api/questions/*/options").permitAll()
-          .antMatchers(HttpMethod.PUT,"/api/questions/*", "/api/questions/*/options/*").permitAll()
+          .antMatchers(HttpMethod.POST,"/api/questions", "/api/questions/*/options").hasRole("ADMIN")
+          .antMatchers(HttpMethod.PUT,"/api/questions/*", "/api/questions/*/options/*").hasRole("ADMIN")
           .antMatchers(HttpMethod.DELETE,"/api/questions/*", "/api/questions/*/options/*").hasRole("ADMIN")
-          //
 
           // authentication for states
           .antMatchers("/api/states/**", "/api/states").permitAll()
-
+          .antMatchers("/api/gameStats/*").permitAll()
+            .antMatchers("/api/gameStats").permitAll()
           .antMatchers("/api/test/**").permitAll()
           .antMatchers("/api/id/**/gameStats/**").permitAll()
           .antMatchers("/api/id/**").permitAll()
@@ -118,10 +118,13 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
           .antMatchers(HttpMethod.PUT,"/api/subscribe").permitAll()
           // .antMatchers(HttpMethod.GET,"/api/subscribe").permitAll()
 
+          // authentication for carbon
+          .antMatchers("/api/carbon/**").permitAll()
+
           .antMatchers(h2ConsolePath + "/**").permitAll()
 
           // REMOVE THIS WHEN DONE
-          .antMatchers("/**").permitAll()
+          // .antMatchers("/**").permitAll()
 
         .anyRequest().authenticated();
     

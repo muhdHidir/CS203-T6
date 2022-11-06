@@ -2,16 +2,14 @@ package G2T6.G2T6.G2T6.controllers;
 
 import G2T6.G2T6.G2T6.exceptions.GameStatsNotFoundException;
 import G2T6.G2T6.G2T6.exceptions.NotEnoughGameStatsException;
-import G2T6.G2T6.G2T6.exceptions.StateNotFoundException;
 import G2T6.G2T6.G2T6.exceptions.UserNotFoundException;
 import G2T6.G2T6.G2T6.misc.State;
-import G2T6.G2T6.G2T6.models.CurrentState;
-import G2T6.G2T6.G2T6.repository.StateRepository;
 import G2T6.G2T6.G2T6.models.GameStats;
 import G2T6.G2T6.G2T6.repository.GameStatsRepository;
 import G2T6.G2T6.G2T6.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,7 +23,7 @@ public class GameStatsController {
     private UserRepository userRepo;
 
     @Autowired
-    public GameStatsController(GameStatsRepository gameStateRepo, UserRepository userRepo){
+    public GameStatsController(final GameStatsRepository gameStateRepo, final UserRepository userRepo){
         this.gameStateRepo = gameStateRepo;
         this.userRepo = userRepo;
     }
@@ -39,6 +37,14 @@ public class GameStatsController {
         return gameStateRepo.findAll();
     }
 
+    @GetMapping("/gameStats/allUnique")
+    public List<GameStats> getAllUniqueGameStats(){
+        List<GameStats> completedStats = filterAllCompletedGameStats(getAllGameStats());
+        Collections.sort(completedStats);
+        List<GameStats> completedStatsWithOutDuplicate = filterUniqueGameStats(completedStats);
+        return completedStatsWithOutDuplicate;
+    }
+
     /**
      * List all top n game stats in the system
      * First it filter through all game stats and only select those that have completed state
@@ -48,16 +54,15 @@ public class GameStatsController {
      * @return return count number of people in term of total game stats score
      */
     @GetMapping("/gameStats/{count}")
-    public List<GameStats> getAllTopNGameStats(@PathVariable (value = "count") int count){
+    public List<GameStats> getAllTopNGameStats(@PathVariable (value = "count") final int count){
         List<GameStats> completedStats = filterAllCompletedGameStats(getAllGameStats());
-
         enoughCount(count, completedStats.size());
 
         Collections.sort(completedStats);
 
         List<GameStats> completedStatsWithOutDuplicate = filterUniqueGameStats(completedStats);
 
-        enoughCount(count, completedStats.size());
+        enoughCount(count, completedStatsWithOutDuplicate.size());
 
         return  completedStatsWithOutDuplicate.subList(0, count);
     }
@@ -67,7 +72,7 @@ public class GameStatsController {
      * @param expectedCount a integer value
      * @param count a integer value
      */
-    public void enoughCount(int expectedCount, int count){
+    public void enoughCount(final int expectedCount,final int count){
         if(expectedCount > count) throw new NotEnoughGameStatsException(count);
     }
 
@@ -76,10 +81,10 @@ public class GameStatsController {
      * @param gameStats a list of GameStats object
      * @return  all completed game stats
      */
-    public List<GameStats> filterAllCompletedGameStats(List<GameStats> gameStats){
+    public List<GameStats> filterAllCompletedGameStats(final List<GameStats> gameStats){
         List<GameStats> completedStats = new ArrayList<>();
         for(GameStats gs: gameStats){
-            if(gs.getCurrentState().getCurrentState() == State.completed){
+            if(gs.getCurrentState() != null && gs.getCurrentState().getCurrentState() == State.completed){
                 completedStats.add(gs);
             }
         }
@@ -91,7 +96,7 @@ public class GameStatsController {
      * @param gameStats a list of GameStats object
      * @return one game stats from each user
      */
-    public List<GameStats> filterUniqueGameStats(List<GameStats> gameStats){
+    public List<GameStats> filterUniqueGameStats(final List<GameStats> gameStats){
         List<GameStats> completedStatsWithOutDuplicate = new ArrayList<>();List<Long> userIds = new ArrayList<>();
         for(int i = 0; i < gameStats.size(); i++){
             Long userId = gameStats.get(i).getUser().getId();
@@ -109,7 +114,7 @@ public class GameStatsController {
      * @return return all selected user's game stats
      **/
     @GetMapping("/id/{userId}/gameStats")
-    public List<GameStats> getAllSelectedUserGameStats(@PathVariable (value = "userId") Long userId){
+    public List<GameStats> getAllSelectedUserGameStats(@PathVariable (value = "userId") final Long userId){
         if(!userRepo.existsById(userId)){
             throw new UserNotFoundException(userId);
         }
@@ -123,12 +128,11 @@ public class GameStatsController {
      * @return game states of selected user and selected game stats id
      */
     @GetMapping("/id/{userId}/gameStats/{id}")
-    public Optional<GameStats> getGameStats(@PathVariable (value = "userId") Long userId,
-                                            @PathVariable (value = "id") Long id){
+    public Optional<GameStats> getGameStats(@PathVariable (value = "userId") final Long userId,
+                                            @PathVariable (value = "id") final Long id){
         if(!userRepo.existsById(userId)){
             throw new UserNotFoundException(userId);
         }
-        System.out.println("entered");
         return gameStateRepo.findByIdAndUserId(id, userId);
     }
 
@@ -138,8 +142,9 @@ public class GameStatsController {
      * @param gameStats a GameStats object
      * @return the new game stats added to selected user
      */
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/id/{userId}/gameStats")
-    public GameStats addGameStats(@PathVariable (value = "userId") Long userId, @Valid @RequestBody GameStats gameStats){
+    public GameStats addGameStats(@PathVariable (value = "userId") final Long userId, @Valid @RequestBody final GameStats gameStats){
         return userRepo.findById(userId).map(user ->{
             gameStats.setUser(user);
             return gameStateRepo.save(gameStats);
@@ -148,47 +153,43 @@ public class GameStatsController {
 
     /**
      * update selected users game stats with selected id
-     * @param userId a long value
      * @param id a long value
      * @param newStats a GameStats object
      * @return the updated game stats
      */
-    @PutMapping("/id/{userId}/gameStats/{id}")
+    @PutMapping("/gameStats/{id}")
     public GameStats updateGameStats(
-            @PathVariable (value = "userId") Long userId,
-            @PathVariable (value = "id") Long id,
-            @Valid @RequestBody GameStats newStats){
+            @PathVariable (value = "id") final Long id,
+            @Valid @RequestBody final GameStats newStats){
+        return gameStateRepo.findById(id).map(gameStats ->{
+            gameStats.setChangeInIncomeVal(newStats.getChangeInIncomeVal());
+            gameStats.setChangeInSustainabilityVal(newStats.getChangeInSustainabilityVal());
+            gameStats.setChangeInMoraleVal(newStats.getChangeInMoraleVal());
+            gameStats.setChangeInCashVal(newStats.getChangeInCashVal());
 
-        if(!userRepo.existsById(userId)){
-            throw new UserNotFoundException(userId);
-        }
-        return gameStateRepo.findByIdAndUserId(id, userId).map(gameStats ->{
-            gameStats.setIncomeVal(newStats.getIncomeVal());
-            gameStats.setEmissionVal(newStats.getEmissionVal());
-            gameStats.setMoraleVal(newStats.getMoraleVal());
+            gameStats.setCurrentIncomeVal(newStats.getCurrentIncomeVal());
+            gameStats.setCurrentSustainabilityVal(newStats.getCurrentSustainabilityVal());
+            gameStats.setCurrentMoraleVal(newStats.getCurrentMoraleVal());
+            gameStats.setCurrentCashInHand(newStats.getCurrentCashInHand());
+
+            gameStats.setMultiplier(newStats.getMultiplier());
+            gameStats.setTotalScore(newStats.getTotalScore());
             return gameStateRepo.save(gameStats);
         }).orElseThrow(() -> new GameStatsNotFoundException(id));
     }
 
     /**
-     * delete a selected users game stats with selected id
-     * @param userId a long value
+     * delete selected game stat
      * @param id a long value
      * @return ResponseEntity of the operation
      */
-    @DeleteMapping("/id/{userId}/gameStats/{id}")
-    public ResponseEntity<?> deleteBook(@PathVariable (value = "userId") Long userId,
-                                        @PathVariable (value = "id") Long id){
-
-        if(!userRepo.existsById(userId)){
-            throw new UserNotFoundException(userId);
-        }
-        Optional<GameStats> gs = gameStateRepo.findByIdAndUserId(id, userId);
-        System.out.println(gs);
-        return gameStateRepo.findByIdAndUserId(id, userId).map(gameStats -> {
-            // gameStateRepo.delete(gameStats);
+    @DeleteMapping("/gameStats/{id}")
+    public void deleteGameStates(@PathVariable (value = "id") final Long id){
+        try{
             gameStateRepo.deleteById(id);
-            return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new GameStatsNotFoundException(id));
+        }catch (EmptyResultDataAccessException e){
+            throw new GameStatsNotFoundException(id);
+        }
     }
+
 }

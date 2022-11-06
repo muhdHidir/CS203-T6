@@ -25,20 +25,27 @@ ChartJS.register(
   Legend
 );
 
-export default function LineChart({ data }) {
+export default function LineChart({ data, year }) {
   const didMount = useRef(false);
 
-  const [yearNumber, setYearNumber] = useState(2);
-  const [labels, setLabels] = useState(["Year 0", "Year 1"]);
+  const [yearNumber, setYearNumber] = useState(data.length - 1);
+  const [labels, setLabels] = useState([]);
   const [state, setState] = useState({
     labels: labels,
     data: data,
   });
 
   useEffect(() => {
+    for (let i = 0; i < data.length; i++) {
+      setLabels((prevState) => [...prevState, "Year " + i]);
+    }
+  }, []);
+
+  console.log(year);
+  useEffect(() => {
     if (didMount.current) {
-      setYearNumber(yearNumber + 1);
-      setLabels((prevState) => [...prevState, `Year ${yearNumber}`]);
+      // setYearNumber(yearNumber + 1);
+      setLabels((prevState) => [...prevState, `Year ${year + 1}`]);
 
       setState({
         labels: labels,
@@ -47,7 +54,11 @@ export default function LineChart({ data }) {
     } else {
       didMount.current = true;
     }
-  }, [data]);
+  }, [year]);
+
+  if (labels.length === 0) {
+    return <div> still loading </div>;
+  }
 
   return (
     <Line

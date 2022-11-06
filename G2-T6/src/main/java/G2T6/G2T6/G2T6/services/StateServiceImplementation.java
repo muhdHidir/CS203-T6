@@ -4,6 +4,8 @@ package G2T6.G2T6.G2T6.services;
 import G2T6.G2T6.G2T6.misc.CONSTANTVARIABLES;
 import G2T6.G2T6.G2T6.misc.State;
 import G2T6.G2T6.G2T6.models.CurrentState;
+import G2T6.G2T6.G2T6.models.Question;
+import G2T6.G2T6.G2T6.models.orders.QuestionOrder;
 import G2T6.G2T6.G2T6.repository.StateRepository;
 import G2T6.G2T6.G2T6.repository.UserRepository;
 
@@ -19,7 +21,7 @@ public class StateServiceImplementation implements StateService {
     private StateRepository stateRepository;
 
     @Autowired
-    public StateServiceImplementation(StateRepository rs){
+    public StateServiceImplementation(final StateRepository rs){
         this.stateRepository = rs;
     }
 
@@ -38,7 +40,7 @@ public class StateServiceImplementation implements StateService {
      * @return selected states
      */
     @Override
-    public CurrentState getCurrentState(Long id) {
+    public CurrentState getCurrentState(final Long id) {
         return stateRepository.findById(id).orElse(null);
     }
 
@@ -48,7 +50,7 @@ public class StateServiceImplementation implements StateService {
      * @return the newly added state
      */
     @Override
-    public CurrentState addCurrentState(CurrentState state) {
+    public CurrentState addCurrentState(final CurrentState state) {
         return stateRepository.save(state);
     }
 
@@ -59,10 +61,11 @@ public class StateServiceImplementation implements StateService {
      * @return updated currentState
      */
     @Override
-    public CurrentState updateCurrentState(Long id, CurrentState state) {
+    public CurrentState updateCurrentState(final Long id, final CurrentState state) {
         return stateRepository.findById(id).map(newState -> {
                 newState.changeState(state.getCurrentState());
                 newState.setYearValue(state.getYearValue());
+                newState.setUserResponse(state.getUserResponse());
             return stateRepository.save(newState );
         }).orElse(null);
     }
@@ -72,14 +75,14 @@ public class StateServiceImplementation implements StateService {
      * @param id a Long value
      */
     @Override
-    public void deleteCurrentState(Long id) { stateRepository.deleteById(id); }
+    public void deleteCurrentState(final Long id) { stateRepository.deleteById(id); }
 
     /**
      * Reset all state value
      * @param id a Long value
      */
     @Override
-    public void factoryReset(Long id) {
+    public void factoryReset(final Long id) {
         stateRepository.findById(id).map(newState -> {
             newState.changeState(CONSTANTVARIABLES.DEFAULTSTATE);
             newState.setYearValue(CONSTANTVARIABLES.DEFAULTYEAR);
@@ -97,6 +100,8 @@ public class StateServiceImplementation implements StateService {
         CurrentState newState = new CurrentState();
         newState.changeState(CONSTANTVARIABLES.DEFAULTSTATE);
         newState.setYearValue(CONSTANTVARIABLES.DEFAULTYEAR);
+        //set default game ID
+        newState.setGameId(CONSTANTVARIABLES.DEFAULTGAMEID);
         return newState;
     }
 
@@ -106,7 +111,7 @@ public class StateServiceImplementation implements StateService {
      * @return all state belonging to selectec user
      */
     @Override
-    public List<CurrentState> listCurrentStateByUserId(Long userid) {
+    public List<CurrentState> listCurrentStateByUserId(final Long userid) {
         return stateRepository.findByUserId(userid);
     }
 
@@ -117,7 +122,7 @@ public class StateServiceImplementation implements StateService {
      * @return state that belong to this user and have this id
      */
     @Override
-    public Optional<CurrentState> getStateByIdAndUserId(Long id, Long userId) {
+    public Optional<CurrentState> getStateByIdAndUserId(final Long id, final Long userId) {
         return stateRepository.findByIdAndUserId(id, userId);
     }
 

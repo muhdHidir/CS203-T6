@@ -2,6 +2,8 @@ package G2T6.G2T6.G2T6.models.security;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -38,6 +40,7 @@ public class User {
 
   @NotBlank
   @Size(max = 120)
+  @JsonIgnore
   private String password;
 
   @NotBlank
@@ -46,9 +49,16 @@ public class User {
   @NotNull
   private boolean isSubscribedEmail;
 
-  //Shared primary key
-//  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//  @PrimaryKeyJoinColumn
+  @Min(1)
+  @Max(10)
+  private int profileImageIndex = 1;
+
+  // High score
+  private double highScore = 0;
+
+  // number of games played
+  private int gamesPlayed = 0;
+
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonIgnore
   private List<CurrentState> currentState;
@@ -65,7 +75,7 @@ public class User {
     this.email = email;
     this.password = password;
   }
-  
+
   public User(String username, String email, String password, boolean isSubscribedEmail) {
     this(username, email, password);
     this.isSubscribedEmail = isSubscribedEmail;
@@ -150,6 +160,30 @@ public class User {
 
   public void setGameStats(List<GameStats> gameStats) {
     this.gameStats = gameStats;
+  }
+
+  public int getProfileImageIndex() {
+    return profileImageIndex;
+  }
+
+  public void setProfileImageIndex(int profileImageIndex) {
+    this.profileImageIndex = profileImageIndex;
+  }
+
+  public double getHighScore() {
+    return highScore;
+  }
+
+  public void setHighScore(double highScore) {
+    this.highScore = highScore;
+  }
+
+  public int getGamesPlayed() {
+    return gamesPlayed;
+  }
+
+  public void setGamesPlayed(int gamesPlayed) {
+    this.gamesPlayed = gamesPlayed;
   }
 
 }
