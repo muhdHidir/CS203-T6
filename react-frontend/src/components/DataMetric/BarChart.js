@@ -41,8 +41,9 @@ export default function BarChart({ data, morale, year }) {
 
   return (
     <Bar
+      className="chart"
       options={{
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false,
         plugins: {
           legend: {

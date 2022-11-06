@@ -18,14 +18,14 @@ const DataMetric = ({
   return (
     <Stack
       spacing={4}
-      className={`border border-solid border-gray-800 rounded-sm pt-2 pl-4 pr-4 pb-1 bg-gray-50 bg-opacity-50 h-full w-full justify-between `}
+      className={`border border-solid border-gray-800 rounded-sm py-3 px-2 lg:px-4 bg-gray-50 bg-opacity-50 justify-between h-full`}
     >
       <Group
         spacing="xs"
-        className="inline-flex text-xs mb-1 space-x-0 text-center rounded-full"
+        className="inline-flex text-xs mb-1 text-center rounded-full"
       >
         {icon}
-        <Text className="text-gray-500 text-base xl:text-md">{label}</Text>
+        <Text className="text-gray-500 text-sm xl:text-md">{label}</Text>
       </Group>
 
       <Group className="items-end" spacing={4}>

@@ -61,64 +61,63 @@ export default function LineChart({ data, year }) {
   }
 
   return (
-    <div className="h-full">
-      <Line
-        options={{
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-            title: {
-              display: false,
-              text: "Cash Line Chart",
-            },
-          },
+    <Line
+      className="chart"
+      options={{
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: {
           legend: {
             display: false,
           },
+          title: {
+            display: false,
+            text: "Cash Line Chart",
+          },
+        },
+        legend: {
+          display: false,
+        },
 
-          scales: {
-            x: {
-              grid: {
-                display: false,
-              },
-            },
-            y: {
-              grid: {
-                display: false,
-
-                drawBorder: false,
-              },
-              ticks: {
-                display: false,
-              },
-              min: 0,
+        scales: {
+          x: {
+            grid: {
+              display: false,
             },
           },
-        }}
-        data={{
-          labels,
-          datasets: [
-            {
-              fill: true,
-              fillColor: "gradient",
-              label: "Cash",
-              lineTension: 0.5,
-              data: state.data,
-              borderColor: "#245A44",
-              backgroundColor: (context) => {
-                const ctx = context.chart.ctx;
-                const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-                gradient.addColorStop(0, "#245A44");
-                gradient.addColorStop(1, "#75c8a6");
-                return gradient;
-              },
+          y: {
+            grid: {
+              display: false,
+
+              drawBorder: false,
             },
-          ],
-        }}
-      />
-    </div>
+            ticks: {
+              display: false,
+            },
+            min: 0,
+          },
+        },
+      }}
+      data={{
+        labels,
+        datasets: [
+          {
+            fill: true,
+            fillColor: "gradient",
+            label: "Cash",
+            lineTension: 0.5,
+            data: state.data,
+            borderColor: "#245A44",
+            backgroundColor: (context) => {
+              const ctx = context.chart.ctx;
+              const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+              gradient.addColorStop(0, "#245A44");
+              gradient.addColorStop(1, "#75c8a6");
+              return gradient;
+            },
+          },
+        ],
+      }}
+    />
   );
 }
