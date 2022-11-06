@@ -15,6 +15,11 @@ Our web application can be accessed via https://www.TheGreenInvestor.com, and wi
     <img src="https://raw.githubusercontent.com/muhdHidir/CS203-T6/main/SoftwareArchitecture.png" width="100%"/>
 </p>
 
+## Entity-Relation Diagram
+<p align="center">
+    <img src="https://raw.githubusercontent.com/muhdHidir/CS203-T6/main/ERDiagram.jpg" width="100%"/>
+</p>
+
 ## Getting Started
 
 The Green Investor Project consists of 2 parts, which can be found in the 'react-frontend' and 'G2-T6' folders.2. The 
