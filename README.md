@@ -12,7 +12,7 @@ Our web application can be accessed via https://www.TheGreenInvestor.com, and wi
 
 ## Software Architecture Diagram
 <p align="center">
-    <img src="https://raw.githubusercontent.com/muhdHidir/CS203-T6/main/SoftwareArchitecture.png" width="50%"/>
+    <img src="https://raw.githubusercontent.com/muhdHidir/CS203-T6/main/SoftwareArchitecture.png" width="100%"/>
 </p>
 
 ## Getting Started
