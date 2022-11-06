@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import { ParallaxProvider } from "react-scroll-parallax";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import Home2 from "./pages/Home";
 import Profile from "./pages/Profile";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";

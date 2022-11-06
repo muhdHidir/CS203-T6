@@ -3,7 +3,6 @@ import React from "react";
 import BarChart from "./BarChart";
 import IncrementChip from "./IncrementChip";
 import LineChart from "./LineChart";
-import "../../css/statchart.css";
 
 const DataMetric = ({
   label,

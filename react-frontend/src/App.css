@@ -6,7 +6,7 @@
 
 .content {
   position: absolute;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   width: 100vw;
   margin-top: calc(var(--navbar-height) + 1rem);
   z-index: 10;

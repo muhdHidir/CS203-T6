@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Parallax } from "react-scroll-parallax";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 import UserService from "../services/user.service";
 import { displayContent } from "../assets/LandingPageDisplayContent";
@@ -19,7 +19,7 @@ export default function Home2() {
 
   const [currentUser, setCurrentUser] = useState(undefined);
 
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const subheaders = [
     "Introduction",
@@ -90,32 +90,12 @@ export default function Home2() {
             />
           </div>
         </Parallax>
-        {/* <Parallax speed={-20}>
-            <img
-              src={Leaf1}
-              className="treeright right-0 fixed w-60 top-0"
-              alt=""
-            />
-          </Parallax> */}
 
         <div className="screen2 h-screen">
-          {/* <Parallax speed={-30}>
-            <img
-              src={Leaf1}
-              id="leftLeaf"
-              className="treeright fixed w-60 top-0"
-              alt=""
-            />
-          </Parallax> */}
           <div className="text-container grid grid-rows-3 h-full">
+            <div className="subheader m-auto p-3 m-3">{subheaders[0]}</div>
             <Parallax
-              // translateX={[-20, 10]}
-              className="subheader m-auto p-3 m-3"
-            >
-              {subheaders[0]}
-            </Parallax>
-            <Parallax
-              // translateX={[20, -10]}
+              speed={-5}
               className="text-content p-3 my-auto mt-5 row-span-2"
             >
               {displayContent[0].src}
@@ -124,36 +104,24 @@ export default function Home2() {
         </div>
         <div className="screen3 h-screen">
           <div className="text-container grid grid-rows-3 md:grid-cols-3 h-full">
-            <Parallax className="subheader m-auto p-3">
+            <Parallax translateX={[0, 50]} className="subheader m-auto p-3">
               {subheaders[1]}
             </Parallax>
-            <Parallax className="text-content p-3 my-auto md:ml-5 row-span-2 md:col-span-2">
+            <Parallax
+              translateX={[0, -50]}
+              className="text-content p-3 my-auto md:ml-5 row-span-2 md:col-span-2"
+            >
               {displayContent[1].src}
             </Parallax>
           </div>
-
-          {/* <Parallax speed={-20} translateX={[0, -100]}>
-            <img src={Tree1} className="tree fixed left-0" alt="" />
-            <img
-              src={Tree1}
-              id="rightTree"
-              className="tree fixed right-0"
-              alt=""
-            />
-          </Parallax> */}
         </div>
         <div className="screen4 h-screen">
           <div className="text-container grid grid-rows-3 md:grid-cols-3 h-full">
-            <Parallax
-              // speed={20}
-              // translateX={[-20, 30]}
-              className="subheader p-3 m-auto "
-            >
+            <Parallax translateX={[0, -50]} className="subheader p-3 m-auto ">
               {subheaders[2]}
             </Parallax>
             <Parallax
-              // speed={20}
-              // translateX={[20, -30]}
+              translateX={[0, 50]}
               className="text-content md:order-first p-3 my-auto md:mr-5 row-span-2 md:col-span-2"
             >
               {displayContent[2].src}
@@ -162,7 +130,7 @@ export default function Home2() {
         </div>
         <div className="screen5 h-screen">
           <Parallax
-            // translateY={[-20, 30]}
+            speed={-20}
             className="h-screen items-center grid grid-rows-3 "
           >
             <div className="subheader m-auto p-3">{subheaders[3]}</div>
@@ -170,22 +138,8 @@ export default function Home2() {
               {displayContent[3].src}
             </div>
             <div className="play-button m-auto p-3 p-2 text-3xl cursor-pointer hover:bg-darkGreen-50 hover:border-0 border-white border-2 border-opacity-50 rounded-3xl hover:scale-110">
-              <Link to="/game">
-                Play as Guest
-                {/* {t("home-button-playgame")} */}
-              </Link>
+              <Link to="/game">Play as Guest</Link>
             </div>
-            {/* {currentUser ? (
-              <Link to="/game" className="">
-                <Button className="play-button m-auto p-3 p-2 text-3xl cursor-pointer hover:bg-darkGreen-50 hover:border-0 border-white border-2 border-opacity-50 rounded-3xl hover:scale-110">
-                  {"home-button-playgame"}
-                </Button>
-              </Link>
-            ) : (
-              <Button className="play-button m-auto p-3 p-2 text-3xl cursor-pointer hover:bg-darkGreen-50 hover:border-0 border-white border-2 border-opacity-50 rounded-3xl hover:scale-110">
-                {"home-button-playguest"}
-              </Button>
-            )} */}
           </Parallax>
         </div>
       </div>

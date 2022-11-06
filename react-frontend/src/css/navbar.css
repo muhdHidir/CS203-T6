@@ -7,6 +7,14 @@
   font-size: 1.25rem;
 }
 
+.music-button {
+  transform: translateX(-100%);
+}
+@media screen and (max-width: 425px) {
+  .music-button {
+    transform: translateX(0);
+  }
+}
 @media screen and (min-width: 1024px) {
   .nav-container {
     height: 10vh;
@@ -25,11 +33,6 @@
   .navbar-title {
     font-size: 2rem;
   }
-
-  .music-button {
-    /* A bit buggy at 1024px */
-    transform: translateX(-100%);
-  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -39,8 +42,5 @@
   .navbar-title {
     font-size: 3rem;
     padding-top: 0.5rem !important;
-  }
-  .music-button {
-    transform: translateX(0);
   }
 }
