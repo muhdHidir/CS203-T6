@@ -1,9 +1,3 @@
-/* Height of navbar in different screen view */
-:root {
-  --navbar-height-lg: 10vh;
-  --navbar-height: 30vh;
-}
-
 .content {
   position: absolute;
   /* box-sizing: border-box; */
