@@ -14,8 +14,7 @@ import GameOver from "./pages/GameOver";
 import GameWin from "./pages/GameWin";
 import Leaderboard from "./pages/Leaderboard";
 import Login from "./components/Login";
-
-// import backgroundVideo from "./assets/forestbg.mp4";
+import myMusic from "./assets/music.mp3";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
@@ -23,6 +22,9 @@ import GameService from "./services/GameService";
 
 function App() {
   const [currentState, setCurrentState] = useState("");
+  const player = new Audio(myMusic);
+  const [isPaused, setPause] = useState(false);
+
   useEffect(() => {
     async function getCurrentState() {
       const gameStateResponse = GameService.getGameState();
@@ -37,6 +39,14 @@ function App() {
     getCurrentState();
   }, []);
 
+  useEffect(() => {
+    isPaused ? player.play() : player.pause();
+
+    // This is cleanup of the effect
+    console.log("Use effect called, isPaused=: " + isPaused);
+    return () => player.pause();
+  }, [isPaused]);
+
   return (
     <div className="main scrollbar-hide overflow-auto">
       <video
@@ -47,7 +57,10 @@ function App() {
         muted
         className="fixed bg-video"
       />
-      <NavBar />
+      <audio id="audio_player" loop>
+        <source src={myMusic} type="audio/mp3" />
+      </audio>
+      <NavBar isPaused={isPaused} setPause={setPause} />
       <div className="content pl-4 pr-4 h-full scrollbar-hide overflow-auto">
         <div className="scrollbar-hide overflow-auto">
           <ParallaxProvider>

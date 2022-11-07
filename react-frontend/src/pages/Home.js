@@ -17,7 +17,6 @@ export default function Home() {
 
   const [currentUser, setCurrentUser] = useState(undefined);
 
-
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -66,7 +65,9 @@ export default function Home() {
     await new Promise((r) => setTimeout(r, 1000));
     authService.login(username, password).then(() => {
       navigate("/game");
+      // To change
       window.location.reload();
+      // To Change
     });
   }
 

@@ -16,9 +16,10 @@ root.render(
   /*Note that: App js is injected into the root div*/
 
   <BrowserRouter>
-    <Suspense fallback={<LoadingSpinner />}>
-      <App />
-    </Suspense>
+  {/* To Change? */}
+    {/* <Suspense fallback={<LoadingSpinner />}> */}
+    <App />
+    {/* </Suspense> */}
   </BrowserRouter>
 );
 

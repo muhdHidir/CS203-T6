@@ -7,7 +7,7 @@ import "../App.css";
 import "../css/barchart.css";
 import "../css/navbar.css";
 import LoginPopUp from "./LoginPopUp";
-import myMusic from "../assets/music.mp3";
+// import myMusic from "../assets/music.mp3";
 import MuteButton from "./MuteButton";
 
 import AuthService from "../services/auth.service";
@@ -16,13 +16,12 @@ import { Box, Button, Grid, Group, Menu, Select, Text } from "@mantine/core";
 import TranslatePopup from "./TranslatePopup/TranslatePopup";
 import { registerables } from "chart.js";
 
-export default function NavBar() {
+export default function NavBar({ isPaused, setPause }) {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
   const [translateOpen, setTranslateOpen] = useState(false);
-  const [playing, setPause] = useState(false);
-  const player = new Audio(myMusic);
+  // const [isPaused, setPause] = useState(false);
 
   const [lang, setLang] = useState("");
 
@@ -34,10 +33,22 @@ export default function NavBar() {
     window.location.replace(loc + "?lng=" + e.target.value);
   };
 
+  // const checkMusic = () => {
+  //   if (isPaused) {
+  //     player.play();
+  //     setPause(false);
+  //   } else {
+  //     player.pause();
+  //     setPause(true);
+  //   }
+  //   console.log("Check music");
+  // };
+
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
     if (user) {
+      console.log("User is not null");
       setCurrentUser(user);
       setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
       setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
@@ -53,12 +64,6 @@ export default function NavBar() {
   }, []);
 
   // For music player, runs everytime 'playing' is changed
-  useEffect(() => {
-    playing ? player.play() : player.pause();
-
-    // This is cleanup of the effect
-    return () => player.pause();
-  }, [playing]);
 
   function logOut() {
     AuthService.logout();
@@ -71,6 +76,7 @@ export default function NavBar() {
     // var myAudio = document.getElementById("audio_player");
     // myAudio.muted = !myAudio.muted;
     setPause((s) => !s);
+    console.log("Mute button called, isPaused=: " + isPaused);
     // setPause(!playing);
   }
   const googleTranslateElementInit = () => {
@@ -137,9 +143,7 @@ export default function NavBar() {
     // Fixed size that NavBar will take up
     <>
       <TranslatePopup opened={translateOpen} handleClose={handleClose} />
-      <audio id="audio_player" autoPlay loop>
-        <source src={myMusic} type="audio/mp3" />
-      </audio>
+
       <Grid
         className="w-full z-20 pt-2 mx-0 mb-4 align-baseline notranslate "
         grow
@@ -160,7 +164,7 @@ export default function NavBar() {
             </Link>
             <div className="music-button hover:scale-110 cursor-pointer mx-auto w-[36px] z-20">
               <MuteButton
-                playing={playing}
+                playing={isPaused}
                 _toggleMuteButton={_toggleMuteButton}
               />
             </div>
