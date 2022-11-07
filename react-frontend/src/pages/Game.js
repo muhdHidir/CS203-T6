@@ -468,7 +468,7 @@ export default function Game() {
                       : false
                   }
                   size="md"
-                  className="h-[90%] w-[15%] bg-darkGreen-50 text-white"
+                  className="h-[90%] w-[40%] bg-darkGreen-50 text-white"
                 >
                   Submit
                 </Button>

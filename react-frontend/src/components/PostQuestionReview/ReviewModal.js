@@ -71,7 +71,7 @@ export default function ReviewModal({
             </Group>
           ) : (
             <Group position="center">
-              <Text>Multiplier</Text>
+              <Text>Final Score Multiplier</Text>
               <div className="pt-1">
                 <IncrementChip increment={multiplier} unit={"x"} />
               </div>
@@ -79,7 +79,7 @@ export default function ReviewModal({
           )}
           <div></div>
           <Button
-            className="bg-darkGreen-50 text-white w-1/8 self-center "
+            className="bg-darkGreen-50 text-white w-1/2 self-center "
             onClick={handleClose}
           >
             Continue
